@@ -1,68 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Profile</title>
+    <title>Personal Web</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navbar.css">
 
     <!-- icon -->
     <link rel="icon"
-        href="https://img.freepik.com/premium-vector/resume-cv-flat-icon-business-management-document-icon-vector-illustration_100456-8407.jpg" />
-
-    <!-- Style -->
-    <link rel="stylesheet" href="style.css">
+        href="https://cdn-icons-png.flaticon.com/512/2418/2418779.png" />
 
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
-    <div class="container-main">
-        <h1>Hi Welcome to my hut</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis recusandae voluptate ipsa, laboriosam iure ullam sequi voluptates itaque harum tenetur, laborum quaerat aliquid culpa dicta quod hic sunt quae ratione? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero cum perferendis soluta sapiente error, vitae quo excepturi non? Ullam quis, ut perferendis in quaerat laborum odit amet commodi necessitatibus ipsam!</p>
-        <button class="button-contact">Contact</button>
-        <div class="button-cv">
-            <p>Download CV</p>
-            <a href="">
-                <i 
-                class="fa-solid fa-circle-down fa-xl"
-                style="color: black;">
-                </i>
-            </a>
+    <nav>
+        <div class="nav-left">
+           <ul>
+                <li>
+                    <img src="https://companieslogo.com/img/orig/FWONK.D-6358a63d.png?t=1634623714" alt="nav-icon" class="nav-icon">
+                </li>
+           </ul>
+           <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+           </ul>
+           <ul>
+                <li>
+                    <a href="index.html">My Project</a>
+                </li>
+           </ul>
         </div>
-        <div class="container-sosmed">
-            <a href="">
-                <i 
-                class="fa-brands fa-linkedin-in fa-2xl"
-                style="color: black;">
-                </i>
-            </a>
-            <a href="">
-                <i 
-                class="fa-brands fa-instagram fa-2xl"
-                style="color: black;">
-                </i>
-            </a>
-            <a href="">
-                <i 
-                class="fa-brands fa-facebook fa-2xl"
-                style="color: black;">
-                </i>
-            </a>
-            <a href="">
-                <i 
-                class="fa-brands fa-twitter fa-2xl"
-                style="color: black;">
-                </i>
-            </a>
+        <div class="nav-right">
+            <a href="contact.html">Contact</a>
         </div>
-        <div class="container-profile">
-            <div class="container-card">
-                <div>
-                    <img src="https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/verstappen.jpg.img.640.medium.jpg/1677069646195.jpg" alt="">
+    </nav>
+    <div class="container-card">
+        <div class="container-content">
+            <div class="left-content">
+                <h1>Hi Welcome to my hut</h1>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi perferendis deleniti sit corporis illum! Saepe maiores ipsam officiis fugit unde, provident inventore aspernatur? Ex obcaecati reprehenderit minus at est aut. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea magnam officia dolores ex? Optio expedita dicta pariatur incidunt, fugit odit delectus modi quibusdam molestias excepturi ea corrupti soluta beatae assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum sit cupiditate tenetur eos aliquam in aspernatur accusantium, provident ipsum perspiciatis fugiat dolorum ipsa ex tempora hic, autem modi beatae quibusdam!</p>
+                <div class="container-contact">
+                    <button class="button-contact">Contact</button>
+                    <a href="" class="button-cv">Download CV
+                        <i class="fa-solid fa-circle-down fa-xl" style="color: black;"></i>
+                    </a>
                 </div>
-                <h2 style="margin: 0;">Amri Marihot Jati</h2>
-                <p style="margin: 0;">Fullstack Developer</p>
+                <div class="container-sosmed">
+                    <a href="">
+                        <i 
+                        class="fa-brands fa-linkedin-in fa-2xl"
+                        style="color: black;">
+                        </i>
+                    </a>
+                    <a href="">
+                        <i 
+                        class="fa-brands fa-instagram fa-2xl"
+                        style="color: black;">
+                        </i>
+                    </a>
+                    <a href="">
+                        <i 
+                        class="fa-brands fa-facebook fa-2xl"
+                        style="color: black;">
+                        </i>
+                    </a>
+                    <a href="">
+                        <i 
+                        class="fa-brands fa-twitter fa-2xl"
+                        style="color: black;">
+                        </i>
+                    </a>
+                </div>
+            </div>
+            <div class="right-content">
+                <div class="container-profile">
+                    <div class="profile-card">
+                        <div>
+                            <img src="https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/verstappen.jpg.img.640.medium.jpg/1677069646195.jpg" alt="">
+                        </div>
+                        <h2 style="margin: 0;">Amri Marihot Jati</h2>
+                        <p style="margin: 0;">Fullstack Developer</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

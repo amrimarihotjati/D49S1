@@ -1,0 +1,56 @@
+/* font import */
+@import url('https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Poppins:wght@400;600;700;800&display=swap');
+
+*{
+    font-family: 'Poppins';
+    font-weight: 400;
+    margin: 0;
+}
+
+
+.nav-icon{
+    width: 50px;
+}
+
+nav{
+    display: flex;
+    background-color: orangered;
+}
+
+.nav-left{
+    display: flex;
+    flex: 80%;
+    flex-wrap: wrap;
+    align-items:center;
+    margin: 0px 0px 0px 50px;
+}
+
+.nav-left ul li{
+    list-style-type: none;
+}
+
+.nav-left ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+
+.nav-right{
+    display: flex;
+    justify-content: end;
+    flex: 20%;
+    margin: 0px 50px;
+    padding: 10px;
+}
+
+.nav-right a {
+    background-color: white;
+    padding: 8px 15px;
+    color: orangered;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+.nav-right a:hover {
+    font-weight: bold;
+}
