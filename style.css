@@ -1,0 +1,74 @@
+/* font import */
+@import url('https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Poppins:wght@400;600;700;800&display=swap');
+
+*{
+    font-family: 'Poppins';
+    font-weight: 400;
+}
+
+h1{
+    font-weight: bold;
+}
+
+h2{
+    font-weight: 500;
+}
+
+p{
+    text-align: justify;
+}
+
+.container-main{
+    margin: 2%;
+    padding: 80px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px #d5d5d5;
+}
+
+.button-contact{
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
+}
+
+.button-contact:hover{
+    background-color: orangered;
+}
+
+.button-cv{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.container-sosmed{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.container-profile{
+    display: flex;
+    justify-content: center;
+    margin: 30px 0px 10px 0px;
+}
+
+.container-card{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0px 0px 20px #d5d5d5;
+    width: 300px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+img{
+    border-radius: 10px 10px 0px 0px;
+    width: 100%;
+}
+
+
