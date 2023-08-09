@@ -7,7 +7,7 @@ function submitData(){
     let subject = document.getElementById("input-subject").value
     let message = document.getElementById("input-message").value
     
-    if(name,email,phoneNumber,subject,message == ""){
+    if(name == ""||email == ""||phoneNumber == ""||subject == ""||message == ""){
         return Swal.fire({
             icon: 'warning',
             title: 'Oops...',
