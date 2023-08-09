@@ -43,6 +43,7 @@ nav {
 .nav-right{
     display: flex;
     justify-content: center;
+    align-items: center;
     flex: 5%;
     margin: 0px 70px;
     padding: 10px;
