@@ -12,9 +12,10 @@
     width: 50px;
 }
 
-nav{
+nav {
     display: flex;
-    background-color: orangered;
+    background: rgb(144, 12, 43);
+    background: linear-gradient(90deg, rgba(144, 12, 43, 1) 0%, rgba(199, 0, 57, 1) 65%, rgba(217, 0, 0, 1) 100%);
 }
 
 .nav-left{
