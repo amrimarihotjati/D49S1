@@ -6,8 +6,8 @@ h1{
 }
 
 form {
-    width: 350px;
-    margin: 50px auto;
+    width: 30%;
+    margin: 20px auto;
     padding: 10px;
 }
 
@@ -32,8 +32,8 @@ input,textarea {
 
 select{
     background-color: #f9f9f9;
-    width: 100%;
-    padding: 10px;
+    width: 97%;
+    padding: 17px;
     margin-top: 5px;
     border-radius: 5px;
     border: 1px solid #dbdbdb;
@@ -44,6 +44,7 @@ select{
 .submit-position{
     display: flex;
     justify-content: end;
+    margin-right: 15px;
 }
 
 button {

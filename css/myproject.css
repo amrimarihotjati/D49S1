@@ -1,0 +1,180 @@
+h1{
+    font-weight: bold;
+    text-align: center;
+    margin-top: 50px;
+    color: #930e2d;
+}
+
+h3{
+    font-weight: 600;
+    color: #930e2d;
+}
+
+/* Icon Styling */
+.fa-brands{
+    color: black;
+}
+
+.fa-brands:hover{
+    color: #930e2d;
+}
+
+form {
+    width: 30%;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+form div {
+    margin-top: 15px;
+}
+
+label {
+    font-weight: 500;
+}
+
+input,textarea {
+    background-color: #f9f9f9;
+    width: 90%;
+    padding: 17px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #dbdbdb;
+    resize: none;
+    box-shadow: 0px 0px 5px #d5d5d5;
+}
+
+/* Date Styling */
+.input-date{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.start-date{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-right: 50px;
+}
+
+.end-date{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.input-date div input{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+
+/* Checkbox Styling */
+.checklist-technologies{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 0px;
+    align-items: center;
+}
+
+.col-tech{
+    margin-top: 0px;
+}
+
+.checkbox-tech{
+    display: flex;
+    gap: 10px;
+}
+
+.checkbox-tech input{
+    width: fit-content;
+    padding: 0px;
+    margin-top: 0px;
+    border-radius: 0px;
+    border: 1px solid #dbdbdb;
+    resize: none;
+    box-shadow: 0px 0px 0px #d5d5d5;
+}
+
+/* Submit Button */
+.submit-position{
+    display: flex;
+    justify-content: end;
+    margin-right: 15px;
+}
+
+button {
+    background-color: #930e2d;;
+    color: white;
+    padding: 6px 25px;
+    border: none;
+    border-radius: 20px;
+    margin-top: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: orangered;
+}
+
+/* Project Card */
+
+.container-project-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container-card-project{
+    margin: 20px 20px;
+    padding: 25px;
+    width: 350px;
+    box-shadow: 0px 0px 20px #d5d5d5;
+    border-radius: 10px;
+}
+
+.image-project-list{
+    object-fit: cover;
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.description-project p{
+    text-align: justify;
+    margin-top: 20px;
+}
+
+.tech-card-container{
+    margin: 40px 0px;
+}
+
+.tech-project{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.button-card-container{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.button-card-container button{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 10px;
+    margin-top: 0px;
+    font-size: 15px;
+    cursor: pointer;
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project</title>
+
+    <link rel="stylesheet" href="/css/myproject.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+
+    <!-- icon -->
+    <link rel="icon"
+        href="https://cdn-icons-png.flaticon.com/512/2418/2418779.png" />
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-left">
+           <ul>
+                <li>
+                    <img src="https://companieslogo.com/img/orig/FWONK.D-6358a63d.png?t=1634623714" alt="nav-icon" class="nav-icon">
+                </li>
+           </ul>
+           <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+           </ul>
+           <ul>
+                <li>
+                    <a href="myproject.html">My Project</a>
+                </li>
+           </ul>
+        </div>
+        <div class="nav-right">
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+    <!-- Navbar -->
+    <div class="container">
+        <h1>Submit Project</h1>
+        <div class="container-form">
+            <form>
+                <div>
+                    <label for="project-name">Project Name</label>
+                    <input type="text" id="input-project-name" placeholder="Your Project Name"/>
+                </div>
+                <div class="input-date">
+                    <div class="start-date">
+                        <label for="start-date">Start Date</label>
+                        <input type="date" id="input-start-date"/>
+                    </div>
+                    <div class="end-date">
+                        <label for="end-date">End Date</label>
+                        <input type="date" id="input-end-date"/>
+                    </div>
+                </div>
+                <div>
+                    <label for="description">Description</label>
+                    <textarea rows="5" cols="10" id="input-description" placeholder="Input Description Project"></textarea>
+                </div>
+                <div>
+                    <label>Technologies</label>
+                    <div class="checklist-technologies">
+                        <div class="col-tech">
+                            <div class="checkbox-tech">
+                                <input type="checkbox" id="check-nodejs"/>
+                                <label>
+                                    <i class="fa-brands fa-node-js fa-lg"></i>
+                                    NodeJS
+                                </label>
+                            </div>
+                            <div class="checkbox-tech">
+                                <input type="checkbox" id="check-nodejs"/>
+                                <label>
+                                    <i class="fa-brands fa-js fa-lg"></i>
+                                    JavaScript
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-tech">
+                            <div class="checkbox-tech">
+                                <input type="checkbox" id="check-nodejs"/>
+                                <label>
+                                    <i class="fa-brands fa-react fa-lg"></i>
+                                    ReactJS
+                                </label>
+                            </div>
+                            <div class="checkbox-tech">
+                                <input type="checkbox" id="check-nodejs"/>
+                                <label>
+                                    <i class="fa-brands fa-html5 fa-lg"></i>
+                                    HTML
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label>Upload Image</label>
+                    <input type="file" id="upload-image"/>
+                </div>
+                <div class="submit-position">
+                    <button>Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <h1>My Project</h1>
+        <div class="container-project-list">
+            <div class="container-card-project">
+                <div>
+                    <img id="image-project-list" class="image-project-list" src="https://media.formula1.com/image/upload/v1685200925/trackside-images/2023/F1_Grand_Prix_of_Monaco___Qualifying/1493777111.jpg.transform/9col-retina/image.jpg"/>
+                </div>
+                <div class="title-project">
+                    <h3>Redbull Project</h3>
+                </div>
+                <div class="duration-project">
+                    <p>Duration : 3 Bulan</p>
+                </div>
+                <div class="description-project">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate quidem, aperiam quia libero reprehenderit, ut quisquam similique expedita nisi nihil veritatis pariatur corporis distinctio alias inventore asperiores soluta. Voluptatibus, esse.</p>
+                </div>
+                <div class="tech-card-container">
+                    <div class="tech-project">
+                        <i class="fa-brands fa-node-js fa-2xl"></i>
+                        <i class="fa-brands fa-js fa-2xl"></i>
+                        <i class="fa-brands fa-react fa-2xl"></i>
+                        <i class="fa-brands fa-html5 fa-2xl"></i>
+                    </div>
+                </div>
+                <div class="button-card-container">
+                    <button type="button" id="edit-button">Edit</button>
+                    <button type="button" id="delete-button">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
