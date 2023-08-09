@@ -11,7 +11,9 @@ function submitData(){
         return Swal.fire({
             icon: 'warning',
             title: 'Oops...',
-            text: 'Harap lengkapi semua form!'
+            text: 'Harap lengkapi semua form!',
+            confirmButtonColor: '#930e2d',
+            iconColor: '#930e2d'
         })
     }
 

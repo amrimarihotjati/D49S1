@@ -2,6 +2,7 @@ h1{
     font-weight: bold;
     text-align: center;
     margin-top: 50px;
+    color: #930e2d;
 }
 
 form {
@@ -46,7 +47,7 @@ select{
 }
 
 button {
-    background-color: black;
+    background-color: #930e2d;;
     color: white;
     padding: 6px 25px;
     border: none;
