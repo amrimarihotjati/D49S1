@@ -102,7 +102,7 @@ p{
     flex-wrap: wrap;
 }
 
-img{
+.image-profile{
     border-radius: 10px 10px 0px 0px;
     width: 100%;
 }
