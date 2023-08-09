@@ -1,12 +1,16 @@
 /* font import */
 @import url('https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Poppins:wght@400;600;700;800&display=swap');
 
+
+/* All Config Styling */
 *{
     font-family: 'Poppins';
     font-weight: 400;
     margin: 0;
 }
 
+
+/* text styling */
 h1{
     font-weight: bold;
 }
@@ -19,6 +23,11 @@ span{
 h2{
     font-weight: 600;
     color: #930e2d;
+    text-align: center;
+}
+
+h4{
+    text-align: center;
 }
 
 p{
@@ -26,6 +35,7 @@ p{
     margin: 20px 0px;
 }
 
+/* Container */
 .container-card{
     margin: 5%;
     padding: 50px;
@@ -90,7 +100,25 @@ p{
     margin: 20px 0px 20px 0px;
 }
 
+/* Icon Styling */
+.fa-brands{
+    color: black;
+}
 
+.fa-brands:hover{
+    color: #930e2d;
+}
+
+.fa-solid{
+    color: black;
+}
+
+.fa-solid:hover{
+    color: #930e2d;
+}
+
+
+/* profile card */
 .container-profile{
     display: flex;
     flex-wrap: wrap;
