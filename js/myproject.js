@@ -119,15 +119,31 @@ function renderProject(){
 
 
 //Dummy Card
-
 function dummyCard() {
   document.getElementById("container-project-list").innerHTML = "";
 
   for (let i = 0; i < 6; i++) {
+    // random image
+
+    let listImageDummyRandom = [
+      "https://hips.hearstapps.com/hmg-prod/images/george-russel-mercedes-amg-f1-team-mercedes-amg-f1-w13-e-news-photo-1656621604.jpg",
+      "https://img.redbull.com/images/c_limit,w_1500,h_1000,f_auto,q_auto/redbullcom/2022/5/25/j8tzdfqjfnxciaca06qc/f1-22-red-bull-racing-rb18-sergio-perez",
+      "https://awsimages.detik.net.id/community/media/visual/2023/02/14/ferrari_169.jpeg?w=1200",
+      "https://www.goodwood.com/globalassets/.road--racing/f1/2023/---standings-and-calendar---/hungarian-gp-steve-etherington-mi-01.jpg?crop=(0,0,2600,1463)&width=1600",
+      "https://cdn.antaranews.com/cache/1200x800/2023/03/04/000_339X3AR.jpg",
+      "https://cdn-9.motorsport.com/images/amp/0ZRK5g40/s6/lewis-hamilton-mercedes-f1-w14.jpg",
+      "https://media.formula1.com/image/upload/content/dam/fom-website/manual/2023/Testing2023/verstappen.png.transform/9col/image.png",
+    ];
+
+    let imageRandom = parseInt(Math.random() * listImageDummyRandom.length);
+
+    console.log(imageRandom);
+    console.log(listImageDummyRandom[imageRandom]);
+
     document.getElementById("container-project-list").innerHTML += `
         <div class="container-card-project">
         <div class="image-project-container">
-            <img id="image-project-list" class="image-project-list" src="https://media.formula1.com/image/upload/v1685200925/trackside-images/2023/F1_Grand_Prix_of_Monaco___Qualifying/1493777111.jpg.transform/9col-retina/image.jpg"/>
+            <img id="image-project-list" class="image-project-list" src="${listImageDummyRandom[imageRandom]}"/>
         </div>
         <div class="title-project">
             <h3>Redbull Project</h3>
@@ -154,6 +170,7 @@ function dummyCard() {
         `;
   }
 }
+
 
 dummyCard()
 
