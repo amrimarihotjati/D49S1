@@ -14,10 +14,10 @@ function addMyProject(){
   //CheckBox
 
   // IconToPush
-  const iconNodeJS = '<i class="fa-brands fa-node-js fa-2xl"></i>';
-  const iconReactJS = '<i class="fa-brands fa-react fa-2xl"></i>';
-  const iconJavaScript = '<i class="fa-brands fa-js fa-2xl"></i>';
-  const iconHTML5 = '<i class="fa-brands fa-html5 fa-2xl"></i>';
+  const iconNodeJS = '<i class="fa-brands fa-node-js fa-xl"></i>';
+  const iconReactJS = '<i class="fa-brands fa-react fa-xl"></i>';
+  const iconJavaScript = '<i class="fa-brands fa-js fa-xl"></i>';
+  const iconHTML5 = '<i class="fa-brands fa-html5 fa-xl"></i>';
 
   //ConditionCheck
   let checkNodeJS = document.getElementById("check-nodejs").checked
@@ -66,6 +66,17 @@ function addMyProject(){
     checkHTML5,
     rentangProject
   };
+
+  //AlertForm
+  if(projectName == ""||projectDescription == ""){
+    return Swal.fire({
+        icon: 'warning',
+        title: 'Oops...',
+        text: 'Harap lengkapi semua form!',
+        confirmButtonColor: '#930e2d',
+        iconColor: '#930e2d'
+    })
+  }
 
   dataProject.push(pushDataProjects);
   renderProject();
@@ -129,10 +140,10 @@ function dummyCard() {
         </div>
         <div class="tech-card-container">
             <div class="tech-project">
-                <i class="fa-brands fa-node-js fa-2xl"></i>
-                <i class="fa-brands fa-js fa-2xl"></i>
-                <i class="fa-brands fa-react fa-2xl"></i>
-                <i class="fa-brands fa-html5 fa-2xl"></i>
+                <i class="fa-brands fa-node-js fa-xl"></i>
+                <i class="fa-brands fa-js fa-xl"></i>
+                <i class="fa-brands fa-react fa-xl"></i>
+                <i class="fa-brands fa-html5 fa-xl"></i>
             </div>
         </div>
         <div class="button-card-container">
@@ -145,5 +156,6 @@ function dummyCard() {
 }
 
 dummyCard()
+
 
 
