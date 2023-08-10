@@ -75,7 +75,7 @@
                                 </label>
                             </div>
                             <div class="checkbox-tech">
-                                <input type="checkbox" id="check-nodejs"/>
+                                <input type="checkbox" id="check-javascript"/>
                                 <label>
                                     <i class="fa-brands fa-js fa-lg"></i>
                                     JavaScript
@@ -84,14 +84,14 @@
                         </div>
                         <div class="col-tech">
                             <div class="checkbox-tech">
-                                <input type="checkbox" id="check-nodejs"/>
+                                <input type="checkbox" id="check-reactjs"/>
                                 <label>
                                     <i class="fa-brands fa-react fa-lg"></i>
                                     ReactJS
                                 </label>
                             </div>
                             <div class="checkbox-tech">
-                                <input type="checkbox" id="check-nodejs"/>
+                                <input type="checkbox" id="check-html5"/>
                                 <label>
                                     <i class="fa-brands fa-html5 fa-lg"></i>
                                     HTML
@@ -105,7 +105,7 @@
                     <input type="file" id="upload-image"/>
                 </div>
                 <div class="submit-position">
-                    <button>Submit</button>
+                    <button onclick="addMyProject(event)">Submit</button>
                 </div>
             </form>
         </div>
@@ -113,9 +113,9 @@
     <hr>
     <div>
         <h1>My Project</h1>
-        <div class="container-project-list">
+        <div class="container-project-list" id="container-project-list">
             <div class="container-card-project">
-                <div>
+                <div class="image-project-container">
                     <img id="image-project-list" class="image-project-list" src="https://media.formula1.com/image/upload/v1685200925/trackside-images/2023/F1_Grand_Prix_of_Monaco___Qualifying/1493777111.jpg.transform/9col-retina/image.jpg"/>
                 </div>
                 <div class="title-project">
@@ -143,5 +143,6 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/myproject.js"></script>
 </body>
 </html>
