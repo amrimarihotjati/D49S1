@@ -151,6 +151,11 @@ button:hover {
     margin-bottom: 10px;
 }
 
+.distance-time-project p{
+    color: grey;
+    font-size: 15px;
+}
+
 .description-project p{
     text-align: justify;
     white-space: nowrap;

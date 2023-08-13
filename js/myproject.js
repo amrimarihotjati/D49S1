@@ -46,13 +46,24 @@ function addMyProject(){
   let rentangBulan = Math.floor(rentangHari / 30);
   let rentangProject = "";
 
-  if (rentangHari <= 6) {
-    rentangProject = rentangHari + " Hari Lagi";
-  } else if (rentangMinggu <= 3) {
-    rentangProject = rentangMinggu + " Minggu Lagi";
-  } else if (rentangBulan >= 1) {
-    rentangProject = rentangBulan + " Bulan Lagi";
+  if(startDateValue.getTime() > endDateValue.getTime()){
+    return Swal.fire({
+      icon: 'warning',
+      title: 'Oops...',
+      text: 'Pastikan Start Date Lebih ',
+      confirmButtonColor: '#930e2d',
+      iconColor: '#930e2d'
+  })
   }
+
+  if( rentangBulan > 0){
+    rentangProject = rentangBulan + " Bulan Lagi";
+  } else if(rentangMinggu > 0){
+    rentangProject = rentangMinggu + " Minggu Lagi";
+  } else {
+    rentangProject = rentangHari + " Hari Lagi";
+  }
+
 
   imageBlob = URL.createObjectURL(projectImage[0]);
 
@@ -163,7 +174,7 @@ function dummyCard() {
             </div>
         </div>
         <div class="button-card-container">
-            <button type="button" id="edit-button">Edit</button>
+            <button onclick="location.href='detailproject.html'" type="button" id="edit-button">Edit</button>
             <button type="button" id="delete-button">Delete</button>
         </div>
          </div>

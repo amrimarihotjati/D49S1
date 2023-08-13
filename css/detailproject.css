@@ -1,0 +1,77 @@
+h1{
+    font-weight: bold;
+    text-align: center;
+    margin-top: 50px;
+    color: #930e2d;
+}
+
+h3{
+    font-weight: 600;
+    color: #930e2d;
+}
+
+/* Icon Styling */
+.fa-brands{
+    color: black;
+}
+
+.fa-brands:hover{
+    color: #930e2d;
+}
+
+.container-project{
+    padding: 70px 100px 100px 100px;
+}
+
+.container-content{
+    display: flex;
+    gap: 100px;
+}
+
+.container-right-content{
+    display: flex;
+    flex: 30%;
+    flex-wrap: wrap;
+}
+
+.image-article{
+    object-fit: cover;
+    width: 800px;
+}
+.container-left-content{
+    display: flex;
+    flex-direction: column;
+    flex: 70%;
+    flex-wrap: wrap;
+}
+
+.container-duration div{
+    margin: 20px 0px;
+}
+
+.container-technologies{
+    display: flex;
+    flex-direction: column;
+}
+
+.container-technologies div{
+    margin: 10px 0px 0px 0px;
+}
+
+.row{
+    display: flex;
+    gap: 100px;
+}
+
+.col{
+    display: flex;
+    flex-direction: column;
+}
+
+.text-project{
+    margin: 20px 0px;
+}
+
+.text-project p{
+    text-align: justify;
+}

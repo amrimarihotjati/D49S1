@@ -1,3 +1,10 @@
+# TASK
+1. Creating Card
+2. Form & Navbar
+3. Form Submission
+4. My Profile Pages > Detail Project | Add My Project
+5. Count Duration
+
 # information
 
 - margin: jarak luar elemen
