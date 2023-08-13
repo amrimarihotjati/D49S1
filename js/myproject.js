@@ -44,6 +44,7 @@ function addMyProject(){
   let rentangHari = rentangWaktu / (1000 * 3600 * 24);
   let rentangMinggu = Math.floor(rentangHari / 7);
   let rentangBulan = Math.floor(rentangHari / 30);
+  let rentangTahun = Math.floor(rentangHari / 365);
   let rentangProject = "";
 
   if(startDateValue.getTime() > endDateValue.getTime()){
@@ -56,7 +57,9 @@ function addMyProject(){
   })
   }
 
-  if( rentangBulan > 0){
+  if(rentangTahun > 0){
+    rentangProject = rentangTahun + " Tahun Lagi"
+  } else if ( rentangBulan > 0){
     rentangProject = rentangBulan + " Bulan Lagi";
   } else if(rentangMinggu > 0){
     rentangProject = rentangMinggu + " Minggu Lagi";
@@ -64,7 +67,7 @@ function addMyProject(){
     rentangProject = rentangHari + " Hari Lagi";
   }
 
-
+  
   imageBlob = URL.createObjectURL(projectImage[0]);
 
   let pushDataProjects = {
