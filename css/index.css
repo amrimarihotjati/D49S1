@@ -95,9 +95,23 @@ p{
 .container-sosmed{
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
     gap: 35px;
     margin: 20px 0px 20px 0px;
+}
+
+button {
+    background-color: #930e2d !important;
+    color: white !important;
+    padding: 6px 25px !important;
+    border: none !important;
+    border-radius: 20px !important;
+    margin-top: 5px !important;
+    font-size: 15px !important;
+    cursor: pointer !important;
+}
+
+button:hover {
+    background-color: orangered !important;
 }
 
 /* Icon Styling */
@@ -140,4 +154,30 @@ p{
 .image-profile{
     border-radius: 10px 10px 0px 0px;
     width: 100%;
+}
+
+@media (max-width: 991.98px) {
+    .container-content{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .left-content{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .container-contact{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 20px 0px 20px 0px;
+        flex-wrap: wrap;
+    }    
+    
 }

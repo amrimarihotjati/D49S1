@@ -4,6 +4,7 @@
 3. Form Submission
 4. My Profile Pages > Detail Project | Add My Project
 5. Count Duration
+6. Responsive Layout
 
 # information
 

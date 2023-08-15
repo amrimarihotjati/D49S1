@@ -1,12 +1,13 @@
 h1{
-    font-weight: bold;
-    text-align: center;
-    margin-top: 50px;
-    color: #930e2d;
+    font-weight: bold !important;
+    text-align: center !important;
+    margin-top: 50px !important;
+    color: #930e2d !important;
+    font-size: xx-large !important;
 }
 
 form {
-    width: 30%;
+    width: 40%;
     margin: 20px auto;
     padding: 10px;
 }
@@ -44,20 +45,27 @@ select{
 .submit-position{
     display: flex;
     justify-content: end;
-    margin-right: 15px;
 }
 
 button {
-    background-color: #930e2d;;
-    color: white;
-    padding: 6px 25px;
-    border: none;
-    border-radius: 20px;
-    margin-top: 5px;
-    font-size: 15px;
-    cursor: pointer;
+    background-color: #930e2d !important;
+    color: white !important;
+    padding: 6px 25px !important;
+    border: none !important;
+    border-radius: 20px !important;
+    margin-top: 5px !important;
+    font-size: 15px !important;
+    cursor: pointer !important;
 }
 
 button:hover {
-    background-color: orangered;
+    background-color: orangered !important;
+}
+
+@media (max-width: 991.98px) {
+    form {
+        width: 80%;
+        margin: 20px auto;
+        padding: 10px;
+    }
 }

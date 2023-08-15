@@ -7,11 +7,13 @@ let dataProject = [
 function addMyProject(){
   event.preventDefault();
 
+  
   let projectImage = document.getElementById("upload-image").files;
   let projectName = document.getElementById("input-project-name").value;
   let projectDescription = document.getElementById("input-description").value;
 
   //CheckBox
+
 
   // IconToPush
   const iconNodeJS = '<i class="fa-brands fa-node-js fa-xl"></i>';
@@ -184,7 +186,6 @@ function dummyCard() {
         `;
   }
 }
-
 
 dummyCard()
 

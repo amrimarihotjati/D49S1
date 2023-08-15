@@ -1,8 +1,9 @@
 h1{
-    font-weight: bold;
-    text-align: center;
-    margin-top: 50px;
-    color: #930e2d;
+    font-weight: bold !important;
+    text-align: center !important;
+    margin-top: 50px !important;
+    color: #930e2d !important;
+    font-size: xx-large !important;
 }
 
 h3{

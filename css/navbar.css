@@ -12,54 +12,28 @@
     width: 50px;
 }
 
+
+/* bootstrap */
+.container-fluid{
+    margin-left: 50px !important;
+    margin-right: 50px !important;
+}
+
+.navbar-brand img{
+    width: 50px;
+}
+/* bootstrap */
+
 nav {
     display: flex;
     background: rgb(144, 12, 43);
     background: linear-gradient(90deg, rgba(144, 12, 43, 1) 0%, rgba(199, 0, 57, 1) 65%, rgba(217, 0, 0, 1) 100%);
 }
 
-.nav-left{
-    display: flex;
-    flex: 95%;
-    flex-wrap: wrap;
-    align-items:center;
-    margin: 0px 0px 0px 50px;
-}
+@media (max-width: 991.98px) {
 
-.nav-left ul li{
-    list-style-type: none;
-}
-
-.nav-left ul li a{
-    color: white;
-    text-decoration: none;
-}
-
-.nav-left ul li a:hover{
-    color: black;
-}
-
-
-.nav-right{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 5%;
-    margin: 0px 70px;
-    padding: 10px;
-    flex-wrap: wrap;
-}
-
-.nav-right a {
-    background-color: white;
-    padding: 5px 10px;
-    color: orangered;
-    border-radius: 15px;
-    text-decoration: none;
-    height: 25px;
-    width: 100%;
-}
-
-.nav-right a:hover {
-    background-color: black;
+    .container-fluid{
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
 }
