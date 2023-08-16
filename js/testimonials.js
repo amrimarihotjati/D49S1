@@ -58,7 +58,7 @@ function addTestimonials(){
                         </div>
                         <div class="star">
                             <i class="fa-solid fa-star" style="color: #930e2d;"></i>
-                            <small class="text-body-secondary">5</small>
+                            <small class="text-body-secondary">${dataTestimonials[i].Star}</small>
                         </div>
             </div>
         </div>
