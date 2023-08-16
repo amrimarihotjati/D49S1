@@ -1,0 +1,41 @@
+h1{
+    font-weight: bold !important;
+    text-align: center !important;
+    margin-top: 50px !important;
+    color: #930e2d !important;
+    font-size: xx-large !important;
+    margin-bottom: 50px !important;
+}
+
+.container-testi{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
+
+button {
+    background-color: #930e2d !important;
+    color: white !important;
+    padding: 6px 25px !important;
+    border: none !important;
+    border-radius: 20px !important;
+    margin-top: 5px !important;
+    font-size: 15px !important;
+    cursor: pointer !important;
+}
+
+button:hover {
+    background-color: orangered !important;
+}
+
+.container-star{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+p{
+    font-size: medium;
+    text-align: justify;
+}

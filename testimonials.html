@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>Testimonials</title>
 
     <link rel="stylesheet" href="/css/navbar.css">
-    <link rel="stylesheet" href="/css/contact.css">
+    <link rel="stylesheet" href="/css/testimonials.css">
 
     <!-- icon -->
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2418/2418779.png" />
@@ -53,42 +53,31 @@
     </nav>
     <!-- Navbar -->
     <div class="container">
-        <h1>Get In Touch</h1>
-        <div class="container-form">
-            <form>
-                <div class="mb-3">
-                    <label for="input-name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="input-name" aria-describedby="emailHelp" required>
-                  </div>
-                <div class="mb-3">
-                  <label for="input-email" class="form-label">Email Address</label>
-                  <input type="email" class="form-control" id="input-email" aria-describedby="emailHelp" required>
+        <h1>My Tesimonials</h1>
+        <div class="container-testi">
+            <div class="card" style="width: 16rem;">
+                <img src="https://media.formula1.com/image/upload/t_16by9South/f_auto/q_auto/v1692021567/fom-website/2023/August%20Break/GettyImages-1252687923.jpg.transform/9col-retina/image.jpg"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <div class="card-header rounded mb-1">
+                        Quote
+                    </div>
+                    <blockquote class="blockquote mb-3">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore pariatur ea possimus provident explicabo.</p>
+                        <footer class="blockquote-footer text-end" style="color: #930e2d; font-weight: 600;">Amri</footer>
+                    </blockquote>
+                    <div class="card-footer text-end rounded">
+                        <i class="fa-solid fa-star" style="color: #930e2d;"></i>
+                        <small class="text-body-secondary">5</small>
+                    </div>
                 </div>
-                <div class="mb-3">
-                  <label for="input-phonenumber" class="form-label">Phone Number</label>
-                  <input type="number" class="form-control" id="input-phone" required>
-                </div>
-                <div>
-                    <label for="input-subject">Subject</label>
-                    <select id="input-subject" class="form-select" aria-label="Default select example" required>
-                        <option selected>Select Subject</option>
-                        <option>Frontend</option>
-                        <option>Backend</option>
-                        <option>Fullstack</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="input-message" class="form-label">Your Message</label>
-                    <textarea class="form-control" id="input-message" rows="7" required></textarea>
-                </div>
-                <div class="submit-position">
-                    <button type="submit" class="btn btn-primary" onclick="submitData()">Submit</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/js/contact.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

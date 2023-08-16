@@ -5,6 +5,7 @@
 4. My Profile Pages > Detail Project | Add My Project
 5. Count Duration
 6. Responsive Layout
+7. OOP Javascript/Testimonials
 
 # information
 
