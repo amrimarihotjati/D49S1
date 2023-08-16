@@ -50,7 +50,7 @@ function addTestimonials(){
                 Quote
             </div>
             <blockquote class="blockquote mb-3">
-                <p>${dataTestimonials[i].Quote}</p>
+                <p>"${dataTestimonials[i].Quote}"</p>
                 <footer class="blockquote-footer text-end" style="color: #930e2d; font-weight: 600;">${dataTestimonials[i].Author}</footer>
             </blockquote>
             <div class="card-footer text-end rounded">
