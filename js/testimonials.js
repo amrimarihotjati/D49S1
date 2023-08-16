@@ -3,7 +3,7 @@ let dataTestimonials = [
     {
         Image : "https://media.formula1.com/image/upload/t_16by9South/f_auto/q_auto/v1692021567/fom-website/2023/August%20Break/GettyImages-1252687923.jpg.transform/9col-retina/image.jpg",
         Quote : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore pariatur ea possimus provident explicabo.",
-        Author : "Ammri",
+        Author : "Amri",
         Star : "4"
     },
     {

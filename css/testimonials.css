@@ -18,6 +18,14 @@ h1{
     gap: 50px;
 }
 
+.container-card-star{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
 button {
     background-color: #930e2d !important;
     color: white !important;
