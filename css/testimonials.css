@@ -7,6 +7,10 @@ h1{
     margin-bottom: 50px !important;
 }
 
+.container{
+    margin: 50px 0px;
+}
+
 .container-testi{
     display: flex;
     flex-wrap: wrap;
