@@ -51,11 +51,15 @@ function addTestimonials(){
             </div>
             <blockquote class="blockquote mb-3">
                 <p>"${dataTestimonials[i].Quote}"</p>
-                <footer class="blockquote-footer text-end" style="color: #930e2d; font-weight: 600;">${dataTestimonials[i].Author}</footer>
             </blockquote>
-            <div class="card-footer text-end rounded">
-                <i class="fa-solid fa-star" style="color: #930e2d;"></i>
-                <small class="text-body-secondary">${dataTestimonials[i].Star}</small>
+            <div class="card-footer rounded d-flex justify-content-center gap-5">
+                        <div class="author">
+                            <small class="text-body-secondary">${dataTestimonials[i].Author}</small>
+                        </div>
+                        <div class="star">
+                            <i class="fa-solid fa-star" style="color: #930e2d;"></i>
+                            <small class="text-body-secondary">5</small>
+                        </div>
             </div>
         </div>
     </div>
