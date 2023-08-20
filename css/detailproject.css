@@ -26,23 +26,23 @@ h3{
 
 .container-content{
     display: flex;
-    gap: 100px;
+    gap: 20px;
 }
 
 .container-right-content{
     display: flex;
-    flex: 30%;
+    flex: 50%;
     flex-wrap: wrap;
 }
 
 .image-article{
     object-fit: cover;
-    width: 800px;
+    width: 100%;
 }
 .container-left-content{
     display: flex;
     flex-direction: column;
-    flex: 70%;
+    flex: 50%;
     flex-wrap: wrap;
 }
 
@@ -61,7 +61,7 @@ h3{
 
 .row{
     display: flex;
-    gap: 100px;
+    gap: 10px;
 }
 
 .col{
@@ -75,4 +75,33 @@ h3{
 
 .text-project p{
     text-align: justify;
+}
+
+button {
+    background-color: #930e2d !important;
+    color: white !important;
+    padding: 6px 25px !important;
+    border: none !important;
+    border-radius: 20px !important;
+    margin-top: 5px !important;
+    font-size: 15px !important;
+    cursor: pointer !important;
+}
+
+button:hover {
+    background-color: orangered !important;
+}
+
+@media (max-width: 991.98px) {
+
+    .container-project{
+        padding: 10px 20px 20px 20px;
+    }
+
+    .container-content{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
 }

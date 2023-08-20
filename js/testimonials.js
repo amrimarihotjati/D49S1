@@ -1,70 +1,134 @@
 
 let dataTestimonials = [
     {
-        Image : "https://media.formula1.com/image/upload/t_16by9South/f_auto/q_auto/v1692021567/fom-website/2023/August%20Break/GettyImages-1252687923.jpg.transform/9col-retina/image.jpg",
-        Quote : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore pariatur ea possimus provident explicabo.",
-        Author : "Amri",
-        Star : "4"
+        image : "https://media.formula1.com/image/upload/t_16by9South/f_auto/q_auto/v1692021567/fom-website/2023/August%20Break/GettyImages-1252687923.jpg.transform/9col-retina/image.jpg",
+        quote : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore pariatur ea possimus provident explicabo.",
+        author : "Amri",
+        rating : 2
     },
     {
-        Image : "https://media.formula1.com/image/upload/t_16by9Centre/f_auto/q_auto/v1692029137/fom-website/2023/August%20Break/GettyImages-1247794161.jpg.transform/9col-retina/image.jpg",
-        Quote : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore pariatur ea possimus provident explicabo.",
-        Author : "Izzan",
-        Star : "3"
+        image : "https://media.formula1.com/image/upload/t_16by9Centre/f_auto/q_auto/v1692029137/fom-website/2023/August%20Break/GettyImages-1247794161.jpg.transform/9col-retina/image.jpg",
+        quote : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore pariatur ea possimus provident explicabo.",
+        author : "Izzan",
+        rating : 2
     },
     {
-        Image : "https://media.formula1.com/image/upload/t_16by9North/f_auto/q_auto/v1691841385/fom-website/2023/August%20Break/GettyImages-1488026858.jpg.transform/9col-retina/image.jpg",
-        Quote : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore pariatur ea possimus provident explicabo.",
-        Author : "Nauvalsev",
-        Star : "1"
+        image : "https://media.formula1.com/image/upload/t_16by9North/f_auto/q_auto/v1691841385/fom-website/2023/August%20Break/GettyImages-1488026858.jpg.transform/9col-retina/image.jpg",
+        quote : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore pariatur ea possimus provident explicabo.",
+        author : "Nauvalsev",
+        rating : 3
     },
     {
-        Image : "https://media.formula1.com/image/upload/t_16by9Centre/f_auto/q_auto/v1691597307/fom-website/2023/Red%20Bull/GettyImages-1248220932.jpg.transform/9col-retina/image.jpg",
-        Quote : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore pariatur ea possimus provident explicabo.",
-        Author : "Elfady",
-        Star : "2"
+        image : "https://media.formula1.com/image/upload/t_16by9Centre/f_auto/q_auto/v1691597307/fom-website/2023/Red%20Bull/GettyImages-1248220932.jpg.transform/9col-retina/image.jpg",
+        quote : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore pariatur ea possimus provident explicabo.",
+        author : "Elfady",
+        rating : 4
     },
     {
-        Image : "https://media.formula1.com/image/upload/v1690734334/trackside-images/2023/F1_Grand_Prix_of_Belgium/1580921322.jpg.transform/9col-retina/image.jpg",
-        Quote : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore pariatur ea possimus provident explicabo.",
-        Author : "Jati",
-        Star : "5"
+        image : "https://media.formula1.com/image/upload/v1690734334/trackside-images/2023/F1_Grand_Prix_of_Belgium/1580921322.jpg.transform/9col-retina/image.jpg",
+        quote : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore pariatur ea possimus provident explicabo.",
+        author : "Jati",
+        rating : 3
+    },
+    {
+        image : "https://static01.nyt.com/images/2021/12/16/multimedia/16sp-review-next-inyt1/16sp-review-next-inyt1-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
+        quote : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore pariatur ea possimus provident explicabo.",
+        author : "Verstappen",
+        rating : 3
+    },
+    {
+        image : "https://cdn.antaranews.com/cache/1200x800/2022/08/20/IMG-F1-1-01.jpeg.webp",
+        quote : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore pariatur ea possimus provident explicabo.",
+        author : "Alonso",
+        rating : 4
+    },
+    {
+        image : "https://assets.kompasiana.com/items/album/2023/05/24/1045223-646e166e822199339709c2f4.jpg?t=o&v=400",
+        quote : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore pariatur ea possimus provident explicabo.",
+        author : "Raikonen",
+        rating : 5
     }
 ]
 
 
-console.log(dataTestimonials[0].Image)
-console.log(dataTestimonials[0].Quote)
-console.log(dataTestimonials[0].Author)
+function filterTestimonials(rating){
+    let filteredHTML = ``
 
-function addTestimonials(){
-    document.getElementById("container-testi").innerHTML=""
+    const filteredData = dataTestimonials.filter((cardTesti) => {
+        return cardTesti.rating === rating
+    })
 
-    for(let i = 0; i < dataTestimonials.length; i++){
-        document.getElementById("container-testi").innerHTML += `
+    console.log(filteredData)
+
+    if(filteredData.length == 0){
+        filteredHTML = `
+        <h1>Ooops, Data Not Found </h1>
+        `
+    }
+    
+    filteredData.forEach((cardTesti) => {
+        filteredHTML += `
         <div class="card shadow-sm" style="width: 16rem;" id="card-testi">
-        <img src="${dataTestimonials[i].Image}"
+        <img src="${cardTesti.image}"
             class="card-img-top" alt="...">
         <div class="card-body">
             <div class="card-header rounded mb-1">
                 Quote
             </div>
             <blockquote class="blockquote mb-3">
-                <p>"${dataTestimonials[i].Quote}"</p>
+                <p>"${cardTesti.quote}"</p>
             </blockquote>
             <div class="card-footer rounded d-flex justify-content-center gap-5">
                         <div class="author">
-                            <small class="text-body-secondary">${dataTestimonials[i].Author}</small>
+                            <small class="text-body-secondary">${cardTesti.author}</small>
                         </div>
                         <div class="star">
                             <i class="fa-solid fa-star" style="color: #930e2d;"></i>
-                            <small class="text-body-secondary">${dataTestimonials[i].Star}</small>
+                            <small class="text-body-secondary">${cardTesti.rating}</small>
                         </div>
             </div>
         </div>
-    </div>
-        `;
-    }
+        </div>
+        `
+    })
+
+    document.getElementById("container-testi").innerHTML= filteredHTML
 }
 
-addTestimonials()
+
+// Show All Testimonials
+function allTestimonials(){
+
+    let testimonialsHTML = ``
+
+    dataTestimonials.forEach((cardTesti) => {
+        testimonialsHTML += `
+        <div class="card shadow-sm" style="width: 16rem;" id="card-testi">
+        <img src="${cardTesti.image}"
+            class="card-img-top" alt="...">
+        <div class="card-body">
+            <div class="card-header rounded mb-1">
+                Quote
+            </div>
+            <blockquote class="blockquote mb-3">
+                <p>"${cardTesti.quote}"</p>
+            </blockquote>
+            <div class="card-footer rounded d-flex justify-content-center gap-5">
+                        <div class="author">
+                            <small class="text-body-secondary">${cardTesti.author}</small>
+                        </div>
+                        <div class="star">
+                            <i class="fa-solid fa-star" style="color: #930e2d;"></i>
+                            <small class="text-body-secondary">${cardTesti.rating}</small>
+                        </div>
+            </div>
+        </div>
+        </div>
+        `
+    })
+
+    document.getElementById("container-testi").innerHTML= testimonialsHTML
+
+}
+
+allTestimonials()
