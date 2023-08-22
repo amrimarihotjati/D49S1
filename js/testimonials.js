@@ -85,7 +85,7 @@ async function allTestimonials(){
         dataJSON.forEach((cardTesti) => {
             testimonialsHTML += `
             <div class="card shadow-sm" style="width: 16rem;" id="card-testi">
-            <img src="${cardTesti.image}"
+            <img class="image-card" src="${cardTesti.image}"
                 class="card-img-top" alt="...">
             <div class="card-body">
                 <div class="card-header rounded mb-1">
@@ -141,7 +141,7 @@ async function filterTestimonials(rating){
         filteredData.forEach((cardTesti) => {
             filteredHTML += `
             <div class="card shadow-sm" style="width: 16rem;" id="card-testi">
-            <img src="${cardTesti.image}"
+            <img class="image-card" src="${cardTesti.image}"
                 class="card-img-top" alt="...">
             <div class="card-body">
                 <div class="card-header rounded mb-1">
