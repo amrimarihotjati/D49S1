@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "name": "persolan-web",
+  "description": "1. Creating Card 2. Form & Navbar 3. Form Submission 4. My Profile Pages > Detail Project | Add My Project 5. Count Duration 6. Responsive Layout 7. OOP Javascript/Testimonials",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Day-10"
+  },
+  "author": "Marihots",
+  "license": "ISC"
+}
