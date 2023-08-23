@@ -23,32 +23,25 @@ function dummyCard() {
     console.log(listImageDummyRandom[imageRandom]);
 
     document.getElementById("container-project-list").innerHTML += `
-          <div class="container-card-project">
-          <div class="image-project-container">
-              <img id="image-project-list" class="image-project-list" src="${listImageDummyRandom[imageRandom]}"/>
-          </div>
-          <div class="title-project">
-              <h3>Redbull Project</h3>
-          </div>
-          <div class="duration-project">
-              <p>Duration : 3 Bulan</p>
-          </div>
-          <div class="description-project">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate quidem, aperiam quia libero reprehenderit, ut quisquam similique expedita nisi nihil veritatis pariatur corporis distinctio alias inventore asperiores soluta. Voluptatibus, esse.</p>
-          </div>
-          <div class="tech-card-container">
-              <div class="tech-project">
-                  <i class="fa-brands fa-node-js fa-xl"></i>
-                  <i class="fa-brands fa-js fa-xl"></i>
-                  <i class="fa-brands fa-react fa-xl"></i>
-                  <i class="fa-brands fa-html5 fa-xl"></i>
-              </div>
-          </div>
-          <div class="button-card-container">
-              <button onclick="location.href='detailproject.html'" type="button" id="edit-button">Edit</button>
-              <button type="button" id="delete-button">Delete</button>
-          </div>
-           </div>
+    <div class="card" style="width: 18rem;">
+    <img src="${listImageDummyRandom[imageRandom]}" class="card-img-top" style="height:200px; object-fit:cover;">
+    <div class="card-body">
+        <h2 class="card-title text-start">Redbull Project</h2>
+        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem nisi distinctio, perspiciatis necessitatibus culpa iusto! Accusamus tenetur sunt.</p>
+        <div class="tech-card-container">
+            <div class="tech-project">
+                <i class="fa-brands fa-node-js fa-xl"></i>
+                <i class="fa-brands fa-js fa-xl"></i>
+                <i class="fa-brands fa-react fa-xl"></i>
+                <i class="fa-brands fa-html5 fa-xl"></i>
+            </div>
+        </div>
+        <div class="button-card-container">
+            <button onclick="location.href='detailproject.html'" type="button" id="edit-button">Edit</button>
+            <button type="button" id="delete-button">Delete</button>
+        </div>
+    </div>
+    </div>
           `;
   }
 }
