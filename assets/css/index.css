@@ -26,6 +26,7 @@ h2{
     color: #930e2d !important;
     text-align: center !important;
     margin: 5px 0px !important;
+    font-size: x-large !important;
 }
 
 h5{
@@ -38,7 +39,8 @@ h5{
 }
 
 h4{
-    text-align: center;
+    text-align: center !important;
+    font-size: medium !important;
 }
 
 p{
