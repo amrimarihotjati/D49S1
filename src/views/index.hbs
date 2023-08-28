@@ -122,14 +122,22 @@
                     <h2 class="card-title text-start">
                         <a class="text-decoration-none" href="/detailproject/{{@index}}">{{this.projectName}}</a>
                     </h2>
-                    <p class="card-text">Duration : 3 Month</p>
+                    <p class="card-text">{{this.durationProject}}</p>
                     <p class="card-text">{{this.projectDesc}}</p>
                     <div class="tech-card-container">
                         <div class="tech-project">
+                            {{#if this.nodeJS}}
                             <i class="fa-brands fa-node-js fa-xl"></i>
-                            <i class="fa-brands fa-js fa-xl"></i>
+                            {{/if}}
+                            {{#if this.reactJS}}
                             <i class="fa-brands fa-react fa-xl"></i>
+                            {{/if}}
+                            {{#if this.javaScript}}
+                            <i class="fa-brands fa-js fa-xl"></i>
+                            {{/if}}
+                            {{#if this.HTML}}
                             <i class="fa-brands fa-html5 fa-xl"></i>
+                            {{/if}}
                         </div>
                     </div>
                     <div class="button-card-container">

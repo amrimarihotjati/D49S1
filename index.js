@@ -98,9 +98,7 @@ function projectDetail(req,res){
 
 //AddProject
 function addProject(req,res){
-  const { projectName, startDate, endDate, projectDesc, nodeJS, reactJS, javaScript, HTML, image } = req.body
-
-  const newDataProject = {
+  const {
     projectName,
     startDate,
     endDate,
@@ -109,11 +107,46 @@ function addProject(req,res){
     reactJS,
     javaScript,
     HTML,
-    image : "https://akcdn.detik.net.id/visual/2022/10/24/motor-f1-usa_169.jpeg?w=650"
+    image,
+  } = req.body;
+
+  //Duration
+  let startDateValue = new Date(startDate);
+  let endDateValue = new Date(endDate);
+
+  let rentangWaktu = endDateValue.getTime() - startDateValue.getTime();
+  let rentangHari = rentangWaktu / (1000 * 3600 * 24);
+  let rentangMinggu = Math.floor(rentangHari / 7);
+  let rentangBulan = Math.floor(rentangHari / 30);
+  let rentangTahun = Math.floor(rentangHari / 365);
+  let durationProject = "";
+
+  if (rentangTahun > 0) {
+    durationProject = rentangTahun + " Tahun Lagi";
+  } else if (rentangBulan > 0) {
+    durationProject = rentangBulan + " Bulan Lagi";
+  } else if (rentangMinggu > 0) {
+    durationProject = rentangMinggu + " Minggu Lagi";
+  } else {
+    durationProject = rentangHari + " Hari Lagi";
   }
 
-  dummyProjectData.push(newDataProject)
-  res.redirect('/')
+  const newDataProject = {
+    projectName,
+    startDate,
+    endDate,
+    durationProject,
+    projectDesc,
+    nodeJS,
+    reactJS,
+    javaScript,
+    HTML,
+    image:
+      "https://akcdn.detik.net.id/visual/2022/10/24/motor-f1-usa_169.jpeg?w=650",
+  };
+
+  dummyProjectData.push(newDataProject);
+  res.redirect("/");
 }
 
 //DeleteProject
@@ -138,15 +171,54 @@ function editProject(req,res){
 
   const { id } = req.params;
 
-  const { projectName, projectDesc, image } = req.body
-
-  const data = {
+  const {
     projectName,
+    startDate,
+    endDate,
     projectDesc,
-    image : "https://media.formula1.com/image/upload/t_16by9Centre/f_auto/q_auto/v1692029137/fom-website/2023/August%20Break/GettyImages-1247794161.jpg.transform/9col-retina/image.jpg"
+    nodeJS,
+    reactJS,
+    javaScript,
+    HTML,
+    image,
+  } = req.body;
+
+  //Duration
+  let startDateValue = new Date(startDate);
+  let endDateValue = new Date(endDate);
+
+  let rentangWaktu = endDateValue.getTime() - startDateValue.getTime();
+  let rentangHari = rentangWaktu / (1000 * 3600 * 24);
+  let rentangMinggu = Math.floor(rentangHari / 7);
+  let rentangBulan = Math.floor(rentangHari / 30);
+  let rentangTahun = Math.floor(rentangHari / 365);
+  let durationProject = "";
+
+  if (rentangTahun > 0) {
+    durationProject = rentangTahun + " Tahun Lagi";
+  } else if (rentangBulan > 0) {
+    durationProject = rentangBulan + " Bulan Lagi";
+  } else if (rentangMinggu > 0) {
+    durationProject = rentangMinggu + " Minggu Lagi";
+  } else {
+    durationProject = rentangHari + " Hari Lagi";
   }
 
-  dummyProjectData[id] = data
+  const newDataProject = {
+    projectName,
+    startDate,
+    endDate,
+    durationProject,
+    projectDesc,
+    nodeJS,
+    reactJS,
+    javaScript,
+    HTML,
+    image:
+      "https://akcdn.detik.net.id/visual/2022/10/24/motor-f1-usa_169.jpeg?w=650",
+  };
+
+  dummyProjectData[id] = newDataProject
 
   res.redirect('/')
 
