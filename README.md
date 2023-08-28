@@ -61,3 +61,8 @@ function atau fungsi adalah suatu rangkaian perintah atau kode
 yang dijalankan ketika fungsinya dipanggil
 
 - parameter adalah data yang tidak tetap yang dimasukkan dan diolah dalam suatu fungsi
+
+
+## Problem
+1. Ketika link ada params, navbar berantakan
+2. Redirect harus ke "/"
