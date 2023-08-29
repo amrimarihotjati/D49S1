@@ -2,7 +2,12 @@ const express = require('express')
 const app = express()
 const port = 3000
 const path = require('path')
-// const dummyDataBlog = require('./dummy-data-blog')
+
+// sequelize init
+const config = require('./src/config/config.json')
+const { Sequelize, QueryTypes } = require('sequelize')
+const sequelize = new Sequelize(config.development)
+
 
 //LocalHost
 app.listen(port, () => {
@@ -21,39 +26,39 @@ app.use(express.urlencoded({extended:false}))
 
 
 //MyProject
-const dummyProjectData = [
-   {
-    id : 1,
-    projectName : "Redbull Project",
-    startDate : "2023-06-16",
-    endDate : "2023-08-10",
-    projectDesc : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi fugiat eaque itaque ratione natus similique facere ab magnam? Libero, deleniti rem aliquam magni soluta dolorem debitis minus ipsa maiores hic.",
-    nodeJS : "on",
-    javaScript : "on",
-    image : "https://media.formula1.com/image/upload/content/dam/fom-website/manual/2023/Testing2023/verstappen.png.transform/9col/image.png"
-   },
-   {
-    id : 2,
-    projectName : "Winner Car Project",
-    startDate : "2023-06-16",
-    endDate : "2023-08-10",
-    projectDesc : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi fugiat eaque itaque ratione natus similique facere ab magnam? Libero, deleniti rem aliquam magni soluta dolorem debitis minus ipsa maiores hic.",
-    nodeJS : "on",
-    javaScript : "on",
-    image : "https://img.redbull.com/images/c_limit,w_1500,h_1000,f_auto,q_auto/redbullcom/2022/5/25/j8tzdfqjfnxciaca06qc/f1-22-red-bull-racing-rb18-sergio-perez"
-   },
-   {
-    id : 3,
-    projectName : "Ferrari Project",
-    startDate : "2023-06-16",
-    endDate : "2023-08-10",
-    projectDesc : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi fugiat eaque itaque ratione natus similique facere ab magnam? Libero, deleniti rem aliquam magni soluta dolorem debitis minus ipsa maiores hic.",
-    nodeJS : "on",
-    javaScript : "on",
-    image : "https://awsimages.detik.net.id/community/media/visual/2023/02/14/ferrari_169.jpeg?w=1200"
-  }
+// const dummyProjectData = [
+//    {
+//     id : 1,
+//     projectName : "Redbull Project",
+//     startDate : "2023-06-16",
+//     endDate : "2023-08-10",
+//     projectDesc : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi fugiat eaque itaque ratione natus similique facere ab magnam? Libero, deleniti rem aliquam magni soluta dolorem debitis minus ipsa maiores hic.",
+//     nodeJS : "on",
+//     javaScript : "on",
+//     image : "https://media.formula1.com/image/upload/content/dam/fom-website/manual/2023/Testing2023/verstappen.png.transform/9col/image.png"
+//    },
+//    {
+//     id : 2,
+//     projectName : "Winner Car Project",
+//     startDate : "2023-06-16",
+//     endDate : "2023-08-10",
+//     projectDesc : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi fugiat eaque itaque ratione natus similique facere ab magnam? Libero, deleniti rem aliquam magni soluta dolorem debitis minus ipsa maiores hic.",
+//     nodeJS : "on",
+//     javaScript : "on",
+//     image : "https://img.redbull.com/images/c_limit,w_1500,h_1000,f_auto,q_auto/redbullcom/2022/5/25/j8tzdfqjfnxciaca06qc/f1-22-red-bull-racing-rb18-sergio-perez"
+//    },
+//    {
+//     id : 3,
+//     projectName : "Ferrari Project",
+//     startDate : "2023-06-16",
+//     endDate : "2023-08-10",
+//     projectDesc : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi fugiat eaque itaque ratione natus similique facere ab magnam? Libero, deleniti rem aliquam magni soluta dolorem debitis minus ipsa maiores hic.",
+//     nodeJS : "on",
+//     javaScript : "on",
+//     image : "https://awsimages.detik.net.id/community/media/visual/2023/02/14/ferrari_169.jpeg?w=1200"
+//   }
 
-]
+// ]
 
 //routing
 //Get
@@ -81,11 +86,29 @@ app.post('/myproject-edit/:id',editProject)
 app.post('/form-blog', addBlog)
 app.post('/edit-blog/:id',editBlog)
 
-function home(req,res){
+async function home(req,res){
 
-  console.log(dummyProjectData)
+  try {
+    const query = `SELECT id, name, start_date, end_date, description, technologies, image, "createdAt", "updatedAt" FROM public.projects`;
+    let obj =  await sequelize.query(query, {type: QueryTypes.SELECT});
 
-  res.render('index', {dummyProjectData})
+    const data = obj.map((res) => ({
+      ...res,
+      technologies:{
+        nodeJS: true,
+        reactJS: true,
+        javaScript : false,
+        HTML : false,
+      },
+    }));
+
+    // console.log(data)
+    
+    res.render('index', {dataProject : data})
+  } catch (error) {
+    console.log(err)
+  }
+
 }
 
 
@@ -319,12 +342,6 @@ function addBlog(req,res){
     post : new Date(),
     author : "Amri Marihot Jati"
   }
-
-  console.log(title)
-  console.log(content)
-  console.log(image)
-
-  console.log(req.body)
 
   dummyDataBlog.push(data)
   res.redirect('blog')
