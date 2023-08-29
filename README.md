@@ -61,3 +61,6 @@ module.exports = {
 npx sequelize-cli db:seed:all
 4. Undo seed
 npx sequelize-cli db:seed:undo
+
+
+## Ini Squeize

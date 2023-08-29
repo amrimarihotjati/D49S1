@@ -17,6 +17,7 @@ app.listen(port, () => {
 //handlebars
 app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname, 'src/views'))
+const dateDuration = require('./src/helper/duration');
 
 //staticfiles
 app.use(express.static('src/assets'))
@@ -94,17 +95,18 @@ async function home(req,res){
 
     const data = obj.map((res) => ({
       ...res,
+      duration: dateDuration(res.start_date, res.end_date),
       technologies:{
         nodeJS: true,
         reactJS: true,
         javaScript : false,
-        HTML : false,
+        HTML : true,
       },
     }));
 
     // console.log(data)
     
-    res.render('index', {dataProject : data})
+    res.render('index', {project : data})
   } catch (error) {
     console.log(err)
   }

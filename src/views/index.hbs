@@ -115,14 +115,14 @@
             </a>
         </div>
         <div class="container-project-list" id="container-project-list">
-            {{#each dataProject}}
+            {{#each project}}
             <div class="card" style="width: 18rem;">
                 <img src="{{this.image}}" class="card-img-top">
                 <div class="card-body">
                     <h2 class="card-title text-start">
                         <a class="text-decoration-none" href="/detailproject/{{@index}}">{{this.name}}</a>
                     </h2>
-                    <p class="card-text">{{this.start_date}}</p>
+                    <p class="card-text">{{this.duration}}</p>
                     <p class="card-text">{{this.description}}</p>
                     <div class="tech-card-container">
                         <div class="tech-project">

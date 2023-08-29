@@ -7,11 +7,11 @@ module.exports = {
       "projects",
       [
         {
-          name : "Awesome Season for Redbull Project",
+          name : "Big Project for 2024 Season",
           description : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore pariatur ea possimus provident explicabo",
-          image : "https://static01.nyt.com/images/2021/12/16/multimedia/16sp-review-next-inyt1/16sp-review-next-inyt1-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
-					start_date: "2023-07-01",
-					end_date: "2023-10-01",
+          image : "https://media.formula1.com/image/upload/v1690734334/trackside-images/2023/F1_Grand_Prix_of_Belgium/1580921322.jpg.transform/9col-retina/image.jpg",
+					start_date: "2023-03-21",
+					end_date: "2023-04-10",
 					technologies: ["nodejs", "reactjs"],
           createdAt: new Date(),
           updatedAt: new Date()
