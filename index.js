@@ -26,7 +26,8 @@ app.use(express.static('src/assets'))
 app.use(express.urlencoded({extended:false}))
 
 
-//MyProject
+//DataDummy
+
 // const dummyProjectData = [
 //    {
 //     id : 1,
@@ -63,6 +64,7 @@ app.use(express.urlencoded({extended:false}))
 
 //routing
 //Get
+
 app.get('/', home)
 app.get('/contact', contact)
 app.get('/testimonials', testimonials)
@@ -70,8 +72,9 @@ app.get('/testimonials', testimonials)
 app.get('/myproject', myproject)
 app.get('/detailproject/:id', projectDetail)
 app.get('/delete-project/:id',deleteProject)
-app.get('/myproject-edit/:id',myprojectEdit)
+app.get('/myproject-edit/:id', myprojectEdit);
 app.get('/detailproject', detailproject)
+
 //Blog
 app.get('/blog', blog)
 app.get('/form-blog', formBlog)
@@ -82,30 +85,23 @@ app.get('/edit-blog/:id', editBlogPage)
 //post
 //Project
 app.post('/myproject', addProject)
-app.post('/myproject-edit/:id',editProject)
+app.post('/myproject-update/:id',editProject)
 //blog
 app.post('/form-blog', addBlog)
 app.post('/edit-blog/:id',editBlog)
 
+//index or homepage
 async function home(req,res){
 
   try {
-    const query = `SELECT id, name, start_date, end_date, description, technologies, image, "createdAt", "updatedAt" FROM public.projects`;
+    const query = `SELECT * FROM public."dbProjects";`;
     let obj =  await sequelize.query(query, {type: QueryTypes.SELECT});
 
     const data = obj.map((res) => ({
       ...res,
       duration: dateDuration(res.start_date, res.end_date),
-      technologies:{
-        nodeJS: true,
-        reactJS: true,
-        javaScript : false,
-        HTML : true,
-      },
     }));
 
-    // console.log(data)
-    
     res.render('index', {project : data})
   } catch (error) {
     console.log(err)
@@ -113,144 +109,105 @@ async function home(req,res){
 
 }
 
+//ProjectDetail Page
+async function projectDetail(req,res){
 
-function projectDetail(req,res){
-  const { id } = req.params
+  try {
+    const { id } = req.params
+    const query = `SELECT * FROM "dbProjects" WHERE id=${id}`
+    const obj = await sequelize.query(query, {type: QueryTypes.SELECT})
+    
+    const data = obj.map((res) => ({
+      ...res,
+      duration: dateDuration(res.start_date, res.end_date),
+    }))
+    
+    res.render('detailproject', {project : data[0]})
+  } catch (error) {
+    console.log(err);
+  }
 
-  res.render('detailproject', { project: dummyProjectData[id] })
 }
 
 
-//AddProject
-function addProject(req,res){
-  const {
-    projectName,
-    startDate,
-    endDate,
-    projectDesc,
-    nodeJS,
-    reactJS,
-    javaScript,
-    HTML,
-    image,
-  } = req.body;
+//AddProject Post
+async function addProject(req,res){
+  try {
+    const {name,start_date, end_date, description, nodeJS, reactJS, javaScript, HTML} = req.body
+    const image = "https://static01.nyt.com/images/2021/12/16/multimedia/16sp-review-next-inyt1/16sp-review-next-inyt1-articleLarge.jpg"
 
-  //Duration
-  let startDateValue = new Date(startDate);
-  let endDateValue = new Date(endDate);
+    const nodejsCheck = nodeJS === "true" ? true : false;
+		const reactjsCheck = reactJS === "true" ? true : false;
+		const javascriptCheck = javaScript === "true" ? true : false;
+		const htmlCheck = HTML === "true" ? true : false;
 
-  let rentangWaktu = endDateValue.getTime() - startDateValue.getTime();
-  let rentangHari = rentangWaktu / (1000 * 3600 * 24);
-  let rentangMinggu = Math.floor(rentangHari / 7);
-  let rentangBulan = Math.floor(rentangHari / 30);
-  let rentangTahun = Math.floor(rentangHari / 365);
-  let durationProject = "";
+    await sequelize.query(`INSERT INTO "dbProjects"(
+      name, description, image, start_date, end_date, nodejs, reactjs, javascript, html, "createdAt", "updatedAt")
+      VALUES ('${name}', '${description}', '${image}', '${start_date}', '${end_date}', '${nodejsCheck}', '${reactjsCheck}', '${javascriptCheck}', '${htmlCheck}', NOW(), NOW());`)
+      
+    res.redirect("/");
 
-  if (rentangTahun > 0) {
-    durationProject = rentangTahun + " Tahun Lagi";
-  } else if (rentangBulan > 0) {
-    durationProject = rentangBulan + " Bulan Lagi";
-  } else if (rentangMinggu > 0) {
-    durationProject = rentangMinggu + " Minggu Lagi";
-  } else {
-    durationProject = rentangHari + " Hari Lagi";
+  } catch (error) {
+    console.log(error)
   }
 
-  const newDataProject = {
-    projectName,
-    startDate,
-    endDate,
-    durationProject,
-    projectDesc,
-    nodeJS,
-    reactJS,
-    javaScript,
-    HTML,
-    image:
-      "https://akcdn.detik.net.id/visual/2022/10/24/motor-f1-usa_169.jpeg?w=650",
-  };
-
-  dummyProjectData.push(newDataProject);
-  res.redirect("/");
 }
 
 //DeleteProject
-function deleteProject (req,res){
-  const {id} = req.params
+async function deleteProject (req,res){
 
-  dummyProjectData.splice(id, 1)
+  try {
+    const {id} = req.params
   
-  res.redirect('/')
-}
-
-
-//EditProject
-function myprojectEdit(req,res){
-
-  const {id} = req.params
-
-  res.render('myproject-edit', {project:dummyProjectData[id]})
-}
-
-function editProject(req,res){
-
-  const { id } = req.params;
-
-  const {
-    projectName,
-    startDate,
-    endDate,
-    projectDesc,
-    nodeJS,
-    reactJS,
-    javaScript,
-    HTML,
-    image,
-  } = req.body;
-
-  //Duration
-  let startDateValue = new Date(startDate);
-  let endDateValue = new Date(endDate);
-
-  let rentangWaktu = endDateValue.getTime() - startDateValue.getTime();
-  let rentangHari = rentangWaktu / (1000 * 3600 * 24);
-  let rentangMinggu = Math.floor(rentangHari / 7);
-  let rentangBulan = Math.floor(rentangHari / 30);
-  let rentangTahun = Math.floor(rentangHari / 365);
-  let durationProject = "";
-
-  if (rentangTahun > 0) {
-    durationProject = rentangTahun + " Tahun Lagi";
-  } else if (rentangBulan > 0) {
-    durationProject = rentangBulan + " Bulan Lagi";
-  } else if (rentangMinggu > 0) {
-    durationProject = rentangMinggu + " Minggu Lagi";
-  } else {
-    durationProject = rentangHari + " Hari Lagi";
+    await sequelize.query(`
+      DELETE FROM "dbProjects" WHERE id = ${id}
+    `)
+    
+    res.redirect('/')
+  } catch (error) {
+    console.log(error)
   }
 
-  const newDataProject = {
-    projectName,
-    startDate,
-    endDate,
-    durationProject,
-    projectDesc,
-    nodeJS,
-    reactJS,
-    javaScript,
-    HTML,
-    image:
-      "https://akcdn.detik.net.id/visual/2022/10/24/motor-f1-usa_169.jpeg?w=650",
-  };
-
-  dummyProjectData[id] = newDataProject
-
-  res.redirect('/')
-
 }
 
 
+//EditProject Page
+async function myprojectEdit(req, res) {
+  try {
+		const {id} = req.params
+		const query = `SELECT * FROM "dbProjects" WHERE id=${id}`;
+		const obj = await sequelize.query(query, {
+			type: QueryTypes.SELECT,
+		});
+		res.render("myproject-edit", { project: obj[0] });
+	} catch (err) {
+		console.log(err);
+	}
+}
 
+//EditProject Post
+async function editProject(req, res) {
+  try {
+    const { id } = req.params
+    const {name,start_date, end_date, description, nodeJS, reactJS, javaScript, HTML} = req.body
+    const image = "https://static01.nyt.com/images/2021/12/16/multimedia/16sp-review-next-inyt1/16sp-review-next-inyt1-articleLarge.jpg"
+
+    const nodejsCheck = nodeJS === "true" ? true : false;
+		const reactjsCheck = reactJS === "true" ? true : false;
+		const javascriptCheck = javaScript === "true" ? true : false;
+		const htmlCheck = HTML === "true" ? true : false;
+
+    await sequelize.query(
+			`UPDATE public."dbProjects" SET name='${name}', description='${description}', "start_date"='${start_date}', "end_date"='${end_date}', nodejs=${nodejsCheck}, reactjs=${reactjsCheck}, javascript=${javascriptCheck}, html=${htmlCheck}, "createdAt"=NOW(), "updatedAt"=NOW()
+      WHERE id=${id};`,
+		);
+
+    res.redirect("/");
+
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 
 // ==========================================================================

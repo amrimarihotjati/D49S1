@@ -5,7 +5,6 @@ untuk definisi object, hapus, mengubah.
 "CREATE TABLE name_table (name_column with typedata);"
 "
 
-
 DML : Data Manipulation language
 Manipulasi data.
 
@@ -32,6 +31,11 @@ UPDATE "Users"
 ## Sequelize Install
 1. npm i sequelize-cli pg pg-hstore
 2. npx sequelize-cli init
+
+## Migration, Model, Seeders
+1. Model >> Untuk berkomunikasi dengan Database termasuk Input, Delete (masuk DML)
+2. Migration >> Untuk melakukan penerjemahan database >> table apa aja, colom apa aja (masuk ke DDL)
+3. Seeders >> untuk menambahkan 
 
 ## Migrate Sequelize
 1. buat modelnya dulu

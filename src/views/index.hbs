@@ -120,29 +120,29 @@
                 <img src="{{this.image}}" class="card-img-top">
                 <div class="card-body">
                     <h2 class="card-title text-start">
-                        <a class="text-decoration-none" href="/detailproject/{{@index}}">{{this.name}}</a>
+                        <a class="text-decoration-none" href="detailproject/{{this.id}}">{{this.name}}</a>
                     </h2>
                     <p class="card-text">{{this.duration}}</p>
                     <p class="card-text">{{this.description}}</p>
                     <div class="tech-card-container">
                         <div class="tech-project">
-                            {{#if this.technologies.nodeJS}}
+                            {{#if this.nodejs}}
                             <i class="fa-brands fa-node-js fa-xl"></i>
                             {{/if}}
-                            {{#if this.technologies.reactJS}}
+                            {{#if this.reactjs}}
                             <i class="fa-brands fa-react fa-xl"></i>
                             {{/if}}
-                            {{#if this.technologies.javaScript}}
+                            {{#if this.javascript}}
                             <i class="fa-brands fa-js fa-xl"></i>
                             {{/if}}
-                            {{#if this.technologies.HTML}}
+                            {{#if this.html}}
                             <i class="fa-brands fa-html5 fa-xl"></i>
                             {{/if}}
                         </div>
                     </div>
                     <div class="button-card-container">
-                            <a href="myproject-edit/{{@index}}" class="btn btn-primary">EDIT</a>
-                            <a href="delete-project/{{@index}}" class="btn btn-danger">DELETE</a>
+                            <a href="myproject-edit/{{this.id}}" class="btn btn-primary">EDIT</a>
+                            <a href="/delete-project/{{this.id}}" class="btn btn-danger">DELETE</a>
                     </div>
                 </div>
             </div>

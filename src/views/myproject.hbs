@@ -59,36 +59,36 @@
             <form method="post" action="myproject" >
                 <div class="mb-3">
                     <label for="input-name" class="form-label">Project Name</label>
-                    <input type="text" class="form-control" id="input-project-name" name="projectName" aria-describedby="emailHelp" required>
+                    <input type="text" class="form-control" id="input-project-name" name="name" aria-describedby="emailHelp" required>
                 </div>
                 <div class="mb-3">
                 <div class="row g-3">
                         <div class="col">
                             <label for="start-date">Start Date</label>
-                            <input type="date" class="form-control" name="startDate" id="input-start-date">
+                            <input type="date" class="form-control" name="start_date" id="input-start-date">
                         </div>
                         <div class="col">
                             <label for="end-date">End Date</label>
-                            <input type="date" class="form-control" name="endDate" id="input-end-date">
+                            <input type="date" class="form-control" name="end_date" id="input-end-date">
                         </div>
                 </div>
                 <div class="mb-3">
                     <label for="input-message" class="form-label">Description</label>
-                    <textarea class="form-control" id="input-description" name="projectDesc" rows="7" required></textarea>
+                    <textarea class="form-control" id="input-description" name="description" rows="7" required></textarea>
                 </div>
                 <div class="mb-3">
                     <label>Technologies</label>
                     <div class="checklist-technologies">
                         <div class="col-tech">
                             <div class="checkbox-tech">
-                                <input type="checkbox" id="check-nodejs" name="nodeJS"/>
+                                <input type="checkbox" id="check-nodejs" name="nodeJS" value="true"/>
                                 <label>
                                     <i class="fa-brands fa-node-js fa-lg"></i>
                                     NodeJS
                                 </label>
                             </div>
                             <div class="checkbox-tech">
-                                <input type="checkbox" id="check-javascript" name="javaScript"/>
+                                <input type="checkbox" id="check-javascript" name="javaScript" value="true"/>
                                 <label>
                                     <i class="fa-brands fa-js fa-lg"></i>
                                     JavaScript
@@ -97,14 +97,14 @@
                         </div>
                         <div class="col-tech">
                             <div class="checkbox-tech">
-                                <input type="checkbox" id="check-reactjs" name="reactJS"/>
+                                <input type="checkbox" id="check-reactjs" name="reactJS" value="true"/>
                                 <label>
                                     <i class="fa-brands fa-react fa-lg"></i>
                                     ReactJS
                                 </label>
                             </div>
                             <div class="checkbox-tech">
-                                <input type="checkbox" id="check-html5" name="HTML"/>
+                                <input type="checkbox" id="check-html5" name="HTML" value="true"/>
                                 <label>
                                     <i class="fa-brands fa-html5 fa-lg"></i>
                                     HTML

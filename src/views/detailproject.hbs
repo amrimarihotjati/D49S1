@@ -23,14 +23,16 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-        <div class="container-fluid gap-2">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark"
+        style="display:flex; background:rgb(144, 12, 43); background: linear-gradient(90deg, rgba(144, 12, 43, 1) 0%, rgba(199, 0, 57, 1) 65%, rgba(217, 0, 0, 1) 100%);">
+        <div class="container-fluid gap-2" style="margin-right:50px; margin-left:50px">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
                 aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="#">
-                <img src="https://companieslogo.com/img/orig/FWONK.D-6358a63d.png?t=1634623714" alt="nav-icon">
+            <a class="navbar-brand" style="margin-bottom: 5px;" href="#">
+                <img style="width: 50px;" src="https://companieslogo.com/img/orig/FWONK.D-6358a63d.png?t=1634623714"
+                    alt="nav-icon">
             </a>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
@@ -48,69 +50,101 @@
                     </li>
                 </ul>
                 <a href="contact">
-                    <button class="btn btn-warning">Contact</button>
+                    <button class="btn btn-warning" style="
+                        background-color: #930e2d !important;
+                        color: white !important;
+                        padding: 6px 25px !important;
+                        border: none !important;
+                        border-radius: 20px !important;
+                        margin-top: 5px !important;
+                        font-size: 15px !important;
+                        cursor: pointer !important;">Contact</button>
                 </a>
             </div>
         </div>
     </nav>
     <!-- Navbar -->
     <div class="container">
-        <h1>{{project.projectName}}</h1>
-        <div class="container-project">
-            <div class="container-content">
-                <div class="container-right-content">
-                    <img class="image-article" src="{{project.image}}">
+        <h1 style="
+            font-weight: bold !important;
+            text-align: center !important;
+            margin-top: 50px !important;
+            color: #930e2d !important;
+            font-size: xx-large !important;">{{project.name}}</h1>
+        <div style="padding: 70px 100px 100px 100px;" class="container-project">
+            <div style="display: flex; gap: 20px;" class="container-content">
+                <div style="
+                    display: flex;
+                    flex: 50%;
+                    flex-wrap: wrap;
+                " class="container-right-content">
+                    <img class="image-article" style=" object-fit: cover;width: 100%;" src="{{project.image}}">
                 </div>
-                <div class="container-left-content">
-                    <div class="container-duration">
-                        <h3>Duration</h3>
+                <div style="display: flex;
+                            flex-direction: column;
+                            flex: 50%;
+                            flex-wrap: wrap;" 
+                        class="container-left-content">
+                    <div style="margin: 20px 0px;" class="container-duration">
+                        <h3 style="">Duration</h3>
                         <div>
                             <p>
                                 <i class="fa-solid fa-calendar-day fa-xl"></i>
-                                12 Jan 2023 - 19 Feb 2023
+                                {{project.start_date}} s.d {{project.end_date}}
                             </p>
                         </div>
                         <div>
                             <p>
                                 <i class="fa-solid fa-clock fa-xl"></i>
-                                1 Month
+                                {{project.duration}}
                             </p>
                         </div>
                     </div>
-                    <div class="container-technologies">
+                    <div style="    display: flex; flex-direction: column;" class="container-technologies">
                         <h3>Technologies</h3>
-                        <div class="row">
-                            <div class="col">
+                        <div style="margin: 10px 0px 0px 0px; display: flex;gap: 10px;" class="row">
+                            <div style="display: flex; flex-direction: column;" class="col">
+                                {{#if project.nodejs}}
                                 <p>
                                     <i class="fa-brands fa-node-js fa-lg"></i>
                                     NodeJS
                                 </p>
+                                {{/if}}
+                                {{#if project.javascript}}
                                 <p>
                                     <i class="fa-brands fa-js fa-lg"></i>
                                     JavaScript
                                 </p>
+                                {{/if}}
+                            
                             </div>
-                            <div class="col">
+                            <div style="display: flex; flex-direction: column;" class="col">
+                                {{#if project.reactjs}}
                                 <p>
                                     <i class="fa-brands fa-react fa-lg"></i>
                                     ReactJS
                                 </p>
+                                {{/if}}
+                                {{#if project.html}}
                                 <p>
                                     <i class="fa-brands fa-html5 fa-lg"></i>
                                     HTML
                                 </p>
+                                {{/if}}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="text-project">
-                <p>
-                    {{project.projectDesc}}
+            <div style="margin: 20px 0px;" class="text-project">
+                <p style="text-align: justify;">
+                    {{project.description}}
                 </p>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 </body>
 </html>
