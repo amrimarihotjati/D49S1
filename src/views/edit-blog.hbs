@@ -24,14 +24,16 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-        <div class="container-fluid gap-2">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark"
+        style="display:flex; background:rgb(144, 12, 43); background: linear-gradient(90deg, rgba(144, 12, 43, 1) 0%, rgba(199, 0, 57, 1) 65%, rgba(217, 0, 0, 1) 100%);">
+        <div class="container-fluid gap-2" style="margin-right:50px; margin-left:50px">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
                 aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="#">
-                <img src="https://companieslogo.com/img/orig/FWONK.D-6358a63d.png?t=1634623714" alt="nav-icon">
+            <a class="navbar-brand" style="margin-bottom: 5px;" href="#">
+                <img style="width: 50px;" src="https://companieslogo.com/img/orig/FWONK.D-6358a63d.png?t=1634623714"
+                    alt="nav-icon">
             </a>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
@@ -49,7 +51,15 @@
                     </li>
                 </ul>
                 <a href="contact">
-                    <button class="btn btn-warning">Contact</button>
+                    <button class="btn btn-warning" style="
+                        background-color: #930e2d !important;
+                        color: white !important;
+                        padding: 6px 25px !important;
+                        border: none !important;
+                        border-radius: 20px !important;
+                        margin-top: 5px !important;
+                        font-size: 15px !important;
+                        cursor: pointer !important;">Contact</button>
                 </a>
             </div>
         </div>
@@ -84,7 +94,6 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/contact.js"></script>
-    <script src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>

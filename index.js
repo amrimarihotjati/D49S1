@@ -8,7 +8,6 @@ const config = require('./src/config/config.json')
 const { Sequelize, QueryTypes } = require('sequelize')
 const sequelize = new Sequelize(config.development)
 
-
 //LocalHost
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
@@ -25,74 +24,21 @@ app.use(express.static('src/assets'))
 // parsing data from client
 app.use(express.urlencoded({extended:false}))
 
-
-//DataDummy
-
-// const dummyProjectData = [
-//    {
-//     id : 1,
-//     projectName : "Redbull Project",
-//     startDate : "2023-06-16",
-//     endDate : "2023-08-10",
-//     projectDesc : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi fugiat eaque itaque ratione natus similique facere ab magnam? Libero, deleniti rem aliquam magni soluta dolorem debitis minus ipsa maiores hic.",
-//     nodeJS : "on",
-//     javaScript : "on",
-//     image : "https://media.formula1.com/image/upload/content/dam/fom-website/manual/2023/Testing2023/verstappen.png.transform/9col/image.png"
-//    },
-//    {
-//     id : 2,
-//     projectName : "Winner Car Project",
-//     startDate : "2023-06-16",
-//     endDate : "2023-08-10",
-//     projectDesc : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi fugiat eaque itaque ratione natus similique facere ab magnam? Libero, deleniti rem aliquam magni soluta dolorem debitis minus ipsa maiores hic.",
-//     nodeJS : "on",
-//     javaScript : "on",
-//     image : "https://img.redbull.com/images/c_limit,w_1500,h_1000,f_auto,q_auto/redbullcom/2022/5/25/j8tzdfqjfnxciaca06qc/f1-22-red-bull-racing-rb18-sergio-perez"
-//    },
-//    {
-//     id : 3,
-//     projectName : "Ferrari Project",
-//     startDate : "2023-06-16",
-//     endDate : "2023-08-10",
-//     projectDesc : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi fugiat eaque itaque ratione natus similique facere ab magnam? Libero, deleniti rem aliquam magni soluta dolorem debitis minus ipsa maiores hic.",
-//     nodeJS : "on",
-//     javaScript : "on",
-//     image : "https://awsimages.detik.net.id/community/media/visual/2023/02/14/ferrari_169.jpeg?w=1200"
-//   }
-
-// ]
-
-//routing
-//Get
-
+//=====GET AND POST=====//
 app.get('/', home)
 app.get('/contact', contact)
 app.get('/testimonials', testimonials)
-//Project
 app.get('/myproject', myproject)
 app.get('/detailproject/:id', projectDetail)
 app.get('/delete-project/:id',deleteProject)
 app.get('/myproject-edit/:id', myprojectEdit);
 app.get('/detailproject', detailproject)
-
-//Blog
-app.get('/blog', blog)
-app.get('/form-blog', formBlog)
-app.get('/blog-detail/:id', blogDetail)
-app.get('/delete-blog/:id',deleteBlog)
-app.get('/edit-blog/:id', editBlogPage)
-
-//post
-//Project
 app.post('/myproject', addProject)
 app.post('/myproject-update/:id',editProject)
-//blog
-app.post('/form-blog', addBlog)
-app.post('/edit-blog/:id',editBlog)
+
 
 //index or homepage
 async function home(req,res){
-
   try {
     const query = `SELECT * FROM public."dbProjects";`;
     let obj =  await sequelize.query(query, {type: QueryTypes.SELECT});
@@ -128,7 +74,6 @@ async function projectDetail(req,res){
   }
 
 }
-
 
 //AddProject Post
 async function addProject(req,res){
@@ -210,7 +155,21 @@ async function editProject(req, res) {
 }
 
 
-// ==========================================================================
+//======================BLog========================//
+
+//Blog
+//=====GET====//
+app.get('/blog', blog)
+app.get('/form-blog', formBlog)
+app.get('/blog-detail/:id', blogDetail)
+app.get('/delete-blog/:id',deleteBlog)
+app.get('/edit-blog/:id', editBlogPage)
+
+
+//=====POST====//
+app.post('/form-blog', addBlog)
+app.post('/edit-blog/:id',editBlog)
+
 
 //BlogPage
 //DataDummy
@@ -249,7 +208,6 @@ const dummyDataBlog = [
   }
 ]
 
-
 function myproject(req,res){
   res.render('myproject')
 }
@@ -267,14 +225,6 @@ function detailproject(req,res){
 }
 
 function blog(req,res){
-  // const {id} = req.params
-
-  // const data = {
-  //   id,
-  //   title: "Pasar Coding di Indonesia Dinilai Masih Menjanjikan",
-  //   content: "Ketimpangan sumber daya manusia (SDM) di sektor digital masih menjadi isu yang belum terpecahkan. Berdasarkan penelitian ManpowerGroup, ketimpangan SDM global, termasuk Indonesia, meningkat dua kali lipat dalam satu dekade terakhir."
-  // }
-
   res.render('blog', {dummyDataBlog})
 }
 
