@@ -1,11 +1,17 @@
 {
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "express": "^4.18.2",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.3",
+    "flash": "^1.1.0",
     "hbs": "^4.2.0",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.32.1",
-    "sequelize-cli": "^6.6.1"
+    "sequelize-cli": "^6.6.1",
+    "session": "^0.1.0",
+    "sweetalert2": "^11.7.27"
   },
   "name": "persolan-web",
   "description": "1. Creating Card 2. Form & Navbar 3. Form Submission 4. My Profile Pages > Detail Project | Add My Project 5. Count Duration 6. Responsive Layout 7. OOP Javascript/Testimonials",

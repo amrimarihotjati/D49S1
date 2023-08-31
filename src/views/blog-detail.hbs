@@ -40,9 +40,11 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
+                    {{#if isLogin}}
                     <li class="nav-item">
                         <a class="nav-link active" href="myproject">MyProject</a>
                     </li>
+                    {{/if}}
                     <li class="nav-item">
                         <a class="nav-link active" href="testimonials">Testimonials</a>
                     </li>
@@ -50,6 +52,25 @@
                         <a class="nav-link active" href="blog">Blog</a>
                     </li>
                 </ul>
+                {{#if this.isLogin}}
+                <ul class="navbar-nav mb-2 mb-lg-0 gap-2" style="margin-right: 20px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Hai {{user}}!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="logout">Logout</a>
+                    </li>
+                </ul>
+                {{else}}
+                <ul class="navbar-nav mb-2 mb-lg-0 gap-2" style="margin-right: 20px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="form-register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="form-login">Login</a>
+                    </li>
+                </ul>
+                {{/if}}
                 <a href="contact">
                     <button class="btn btn-warning" style="
                         background-color: #930e2d !important;

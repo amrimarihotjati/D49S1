@@ -21,7 +21,7 @@
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
-    <!-- Navbar -->
+   <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid gap-2">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
@@ -36,9 +36,11 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
+                    {{#if isLogin}}
                     <li class="nav-item">
                         <a class="nav-link active" href="myproject">MyProject</a>
                     </li>
+                    {{/if}}
                     <li class="nav-item">
                         <a class="nav-link active" href="testimonials">Testimonials</a>
                     </li>
@@ -46,6 +48,25 @@
                         <a class="nav-link active" href="blog">Blog</a>
                     </li>
                 </ul>
+                {{#if isLogin}}
+                <ul class="navbar-nav mb-2 mb-lg-0 gap-2" style="margin-right: 20px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Hai {{user}}!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="logout">Logout</a>
+                    </li>
+                </ul>
+                {{else}}
+                <ul class="navbar-nav mb-2 mb-lg-0 gap-2" style="margin-right: 20px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="form-register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="form-login">Login</a>
+                    </li>
+                </ul>
+                {{/if}}
                 <a href="contact">
                     <button class="btn btn-warning">Contact</button>
                 </a>

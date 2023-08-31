@@ -7,6 +7,9 @@ const path = require('path')
 const config = require('./src/config/config.json')
 const { Sequelize, QueryTypes } = require('sequelize')
 const sequelize = new Sequelize(config.development)
+const bcrypt = require('bcrypt');
+const flash = require('express-flash')
+const session = require('express-session')
 
 //LocalHost
 app.listen(port, () => {
@@ -24,6 +27,24 @@ app.use(express.static('src/assets'))
 // parsing data from client
 app.use(express.urlencoded({extended:false}))
 
+//Flash
+app.use(flash())
+
+//Session
+app.use(session({
+  cookie : {
+    httpOnly: true,
+    secure: false,
+    maxAge: 1000 * 60 * 60 * 2
+  },
+
+  store: new session.MemoryStore(),
+  saveUninitialized: true,
+  resave: false,
+  secret: 'secretValue'
+
+}))
+
 //=====GET AND POST=====//
 app.get('/', home)
 app.get('/contact', contact)
@@ -33,9 +54,50 @@ app.get('/detailproject/:id', projectDetail)
 app.get('/delete-project/:id',deleteProject)
 app.get('/myproject-edit/:id', myprojectEdit);
 app.get('/detailproject', detailproject)
+app.get('/form-register', formRegister)
+app.get('/form-login', formLogin)
+app.get('/logout', logoutUser)
+app.post('/form-register', registerUser)
 app.post('/myproject', addProject)
 app.post('/myproject-update/:id',editProject)
+app.post('/login', loginUser)
 
+
+function contact(req,res){
+  res.render('contact', {
+    isLogin: req.session.isLogin,
+    user: req.session.user})
+}
+
+function testimonials(req,res){
+  res.render('testimonials', {
+    isLogin: req.session.isLogin,
+    user: req.session.user})
+}
+
+function myproject(req,res){
+  res.render('myproject',  {
+    isLogin: req.session.isLogin,
+    user: req.session.user})
+}
+
+function detailproject(req,res){
+  res.render('detailproject',  {
+    isLogin: req.session.isLogin,
+    user: req.session.user})
+}
+
+function formRegister (req,res){
+  res.render("form-register",  {
+    isLogin: req.session.isLogin,
+    user: req.session.user})
+}
+
+function formLogin (req,res){
+  res.render('form-login',  {
+    isLogin: req.session.isLogin,
+    user: req.session.user})
+}
 
 //index or homepage
 async function home(req,res){
@@ -46,9 +108,14 @@ async function home(req,res){
     const data = obj.map((res) => ({
       ...res,
       duration: dateDuration(res.start_date, res.end_date),
+      isLogin: req.session.isLogin
     }));
 
-    res.render('index', {project : data})
+    res.render('index', {
+      project : data,
+      isLogin: req.session.isLogin,
+      user: req.session.user
+    })
   } catch (error) {
     console.log(err)
   }
@@ -65,10 +132,15 @@ async function projectDetail(req,res){
     
     const data = obj.map((res) => ({
       ...res,
+      isLogin: req.session.isLogin,
       duration: dateDuration(res.start_date, res.end_date),
     }))
     
-    res.render('detailproject', {project : data[0]})
+    res.render('detailproject', {
+      project : data[0],
+      isLogin: req.session.isLogin,
+      user: req.session.user
+    })
   } catch (error) {
     console.log(err);
   }
@@ -124,7 +196,10 @@ async function myprojectEdit(req, res) {
 		const obj = await sequelize.query(query, {
 			type: QueryTypes.SELECT,
 		});
-		res.render("myproject-edit", { project: obj[0] });
+		res.render("myproject-edit", { 
+      project: obj[0],
+      isLogin: req.session.isLogin,
+      user: req.session.user });
 	} catch (err) {
 		console.log(err);
 	}
@@ -154,6 +229,69 @@ async function editProject(req, res) {
   }
 }
 
+//RegisterUser Post
+async function registerUser(req,res){
+  try {
+    const { name, email, password} = req.body
+    const salt = 10
+
+    await bcrypt.hash(password, salt, (err, hashPassword) => {
+      const query = `INSERT INTO users (name, email, password, "createdAt", "updatedAt") VALUES ('${name}','${email}','${hashPassword}',NOW(), NOW())`
+      
+      sequelize.query(query)
+      res.redirect('form-login')
+    })
+
+  } catch (error) {
+    console.log(error)
+  }
+
+}
+
+//login action
+async function loginUser(req,res){
+  try {
+    const {email,password} = req.body
+    const query = `SELECT * FROM users WHERE email = '${email}'`
+    let obj = await sequelize.query(query, {type: QueryTypes.SELECT})
+
+    if(!obj.length){
+      req.flash('danger', 'user not registered')
+      return redirect('/form-login')
+    }
+
+    await bcrypt.compare(password, obj[0].password, (err,result) => {
+      if(!result){
+        req.flash('danger', 'wrong password')
+        return res.redirect('/form-login')
+      }else{
+        req.session.isLogin = true
+        req.session.user = obj[0].name
+        req.flash('success', 'login success')
+        res.redirect('/')
+      }
+    })
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+//logout action
+function logoutUser(req, res) {
+	if (req.session.isLogin) {
+		req.session.destroy((err) => {
+			if (err) {
+				console.log(err);
+			} else {
+				res.redirect("/");
+			}
+		});
+	} else {
+		res.redirect("/");
+	}
+}
+
 
 //======================BLog========================//
 
@@ -180,7 +318,8 @@ const dummyDataBlog = [
     content : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi fugiat eaque itaque ratione natus similique facere ab magnam? Libero, deleniti rem aliquam magni soluta dolorem debitis minus ipsa maiores hic.",
     author : "Max Verstappen",
     post : new Date(),
-    image : "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/verstappen.jpg.img.640.medium.jpg/1677069646195.jpg"
+    image : "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/verstappen.jpg.img.640.medium.jpg/1677069646195.jpg",
+    isLogin : false
   },
   {
     // id : 2,
@@ -188,7 +327,8 @@ const dummyDataBlog = [
     content : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi fugiat eaque itaque ratione natus similique facere ab magnam? Libero, deleniti rem aliquam magni soluta dolorem debitis minus ipsa maiores hic.",
     author : "Charles Leclerc",
     post : new Date(),
-    image : "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/leclerc.jpg.img.1920.medium.jpg/1677069223130.jpg"
+    image : "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/leclerc.jpg.img.1920.medium.jpg/1677069223130.jpg",
+    isLogin : false
   },
   {
     // id : 3,
@@ -196,7 +336,8 @@ const dummyDataBlog = [
     content : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi fugiat eaque itaque ratione natus similique facere ab magnam? Libero, deleniti rem aliquam magni soluta dolorem debitis minus ipsa maiores hic.",
     author : "Charles Leclerc",
     post : new Date(),
-    image : "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/alonso.jpg.img.1920.medium.jpg/1677244577162.jpg"
+    image : "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/alonso.jpg.img.1920.medium.jpg/1677244577162.jpg",
+    isLogin : false
   },
   {
     // id : 4,
@@ -204,39 +345,37 @@ const dummyDataBlog = [
     content : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi fugiat eaque itaque ratione natus similique facere ab magnam? Libero, deleniti rem aliquam magni soluta dolorem debitis minus ipsa maiores hic.",
     author : "Charles Leclerc",
     post : new Date(),
-    image : "https://akcdn.detik.net.id/visual/2022/10/24/motor-f1-usa_169.jpeg?w=650"
+    image : "https://akcdn.detik.net.id/visual/2022/10/24/motor-f1-usa_169.jpeg?w=650",
+    isLogin : false
   }
 ]
 
-function myproject(req,res){
-  res.render('myproject')
-}
 
-function contact(req,res){
-  res.render('contact')
-}
-
-function testimonials(req,res){
-  res.render('testimonials')
-}
-
-function detailproject(req,res){
-  res.render('detailproject')
-}
 
 function blog(req,res){
-  res.render('blog', {dummyDataBlog})
+
+  res.render('blog', {
+    dummyDataBlog,
+    isLogin: req.session.isLogin,
+    user: req.session.user
+  })
 }
 
 function formBlog(req,res){
-  res.render('form-blog')
+  res.render('form-blog',  {
+    isLogin: req.session.isLogin,
+    user: req.session.user})
 }
 
 
 function blogDetail(req,res){
   const { id } = req.params
 
-  res.render('blog-detail', { blog: dummyDataBlog[id] })
+  res.render('blog-detail', { 
+    blog: dummyDataBlog[id],
+    isLogin: req.session.isLogin,
+    user: req.session.user
+  })
 }
 
 
@@ -271,7 +410,11 @@ function editBlogPage(req,res){
 
   const {id} = req.params
 
-  res.render('edit-blog', {blog:dummyDataBlog[id]})
+  res.render('edit-blog', { 
+    blog: dummyDataBlog[id],
+    isLogin: req.session.isLogin,
+    user: req.session.user
+  })
 }
 
 function editBlog(req,res){

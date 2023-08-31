@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <!-- Navbar -->
+   <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid gap-2">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
@@ -38,9 +38,11 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
+                    {{#if isLogin}}
                     <li class="nav-item">
                         <a class="nav-link active" href="myproject">MyProject</a>
                     </li>
+                    {{/if}}
                     <li class="nav-item">
                         <a class="nav-link active" href="testimonials">Testimonials</a>
                     </li>
@@ -48,6 +50,25 @@
                         <a class="nav-link active" href="blog">Blog</a>
                     </li>
                 </ul>
+                {{#if isLogin}}
+                <ul class="navbar-nav mb-2 mb-lg-0 gap-2" style="margin-right: 20px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Hai {{user}}!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="logout">Logout</a>
+                    </li>
+                </ul>
+                {{else}}
+                <ul class="navbar-nav mb-2 mb-lg-0 gap-2" style="margin-right: 20px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="form-register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="form-login">Login</a>
+                    </li>
+                </ul>
+                {{/if}}
                 <a href="contact">
                     <button class="btn btn-warning">Contact</button>
                 </a>
@@ -55,6 +76,21 @@
         </div>
     </nav>
     <!-- Navbar -->
+    {{#if messages.success}}
+        <div class="alert alert-success" role="alert">
+            <div class="container">
+            {{messages.success}}
+            </div>
+        </div>
+    {{/if}}
+
+    {{#if messages.logout}}
+        <div class="alert alert-success" role="alert">
+            <div class="container">
+            {{messages.logout}}
+            </div>
+        </div>
+    {{/if}}
     <div class="container-card">
         <div class="container-content">
             <div class="left-content">
@@ -110,9 +146,11 @@
     <div>
         <h5>My Project</h5>
         <div class="d-flex justify-content-center mb-5">
+            {{#if isLogin}}
             <a href="myproject">
             <button>Add Project</button>
             </a>
+            {{/if}}
         </div>
         <div class="container-project-list" id="container-project-list">
             {{#each project}}
@@ -141,8 +179,10 @@
                         </div>
                     </div>
                     <div class="button-card-container">
+                            {{#if this.isLogin}}
                             <a href="myproject-edit/{{this.id}}" class="btn btn-primary">EDIT</a>
                             <a href="/delete-project/{{this.id}}" class="btn btn-danger">DELETE</a>
+                            {{/if}}
                     </div>
                 </div>
             </div>
