@@ -10,6 +10,8 @@ const sequelize = new Sequelize(config.development)
 const bcrypt = require('bcrypt');
 const flash = require('express-flash')
 const session = require('express-session')
+const upload = require('./src/middlewares/uploadFiles')
+
 
 //LocalHost
 app.listen(port, () => {
@@ -23,6 +25,7 @@ const dateDuration = require('./src/helper/duration');
 
 //staticfiles
 app.use(express.static('src/assets'))
+app.use(express.static('src/uploads'))
 
 // parsing data from client
 app.use(express.urlencoded({extended:false}))
@@ -53,13 +56,12 @@ app.get('/myproject', myproject)
 app.get('/detailproject/:id', projectDetail)
 app.get('/delete-project/:id',deleteProject)
 app.get('/myproject-edit/:id', myprojectEdit);
-app.get('/detailproject', detailproject)
 app.get('/form-register', formRegister)
 app.get('/form-login', formLogin)
 app.get('/logout', logoutUser)
 app.post('/form-register', registerUser)
-app.post('/myproject', addProject)
-app.post('/myproject-update/:id',editProject)
+app.post('/myproject', upload.single('upload-image'), addProject)
+app.post('/myproject-update/:id',upload.single('upload-image'), editProject)
 app.post('/login', loginUser)
 
 
@@ -101,9 +103,40 @@ function formLogin (req,res){
 
 //index or homepage
 async function home(req,res){
+
   try {
-    const query = `SELECT * FROM public."dbProjects";`;
-    let obj =  await sequelize.query(query, {type: QueryTypes.SELECT});
+
+    let query = ""
+    let obj = ""
+    
+    if(req.session.idUser){
+
+      console.log("a")
+
+      query = `SELECT "dbProjects".id, title, start_date, end_date, description, nodejs, reactjs, javascript, html, image, users.name AS author FROM "dbProjects" INNER JOIN users ON "dbProjects".author = users.id WHERE "dbProjects".author = :idUser;`;
+      
+      // :idUser >> karena pakai replacements
+
+      obj =  await sequelize.query(query, {
+        type: QueryTypes.SELECT,
+        replacements:{
+          idUser : req.session.idUser,
+        },
+      });
+
+
+    }else{
+
+      console.log("b")
+
+      query = `SELECT "dbProjects".id, title, start_date, end_date, description, nodejs, reactjs, javascript, html, image, users.name AS author FROM "dbProjects" INNER JOIN users ON "dbProjects".author = users.id;`;
+      
+
+      obj =  await sequelize.query(query, {
+        type: QueryTypes.SELECT,
+      });
+
+    }
 
     const data = obj.map((res) => ({
       ...res,
@@ -127,8 +160,12 @@ async function projectDetail(req,res){
 
   try {
     const { id } = req.params
-    const query = `SELECT * FROM "dbProjects" WHERE id=${id}`
-    const obj = await sequelize.query(query, {type: QueryTypes.SELECT})
+
+    const query = `SELECT "dbProjects".id, title, start_date, end_date, description, nodejs, reactjs, javascript, html, image, users.name AS author FROM "dbProjects" LEFT JOIN users ON "dbProjects".author = users.id WHERE "dbProjects".id=${id}`;
+
+		const obj = await sequelize.query(query, {
+			type: QueryTypes.SELECT,
+		})
     
     const data = obj.map((res) => ({
       ...res,
@@ -142,7 +179,7 @@ async function projectDetail(req,res){
       user: req.session.user
     })
   } catch (error) {
-    console.log(err);
+    console.log(error);
   }
 
 }
@@ -150,8 +187,12 @@ async function projectDetail(req,res){
 //AddProject Post
 async function addProject(req,res){
   try {
-    const {name,start_date, end_date, description, nodeJS, reactJS, javaScript, HTML} = req.body
-    const image = "https://static01.nyt.com/images/2021/12/16/multimedia/16sp-review-next-inyt1/16sp-review-next-inyt1-articleLarge.jpg"
+    const {title,start_date, end_date, description, nodeJS, reactJS, javaScript, HTML} = req.body
+    //Add Image With Multer
+    const image = req.file.filename
+    const author = req.session.idUser
+
+    console.log(image)
 
     const nodejsCheck = nodeJS === "true" ? true : false;
 		const reactjsCheck = reactJS === "true" ? true : false;
@@ -159,8 +200,8 @@ async function addProject(req,res){
 		const htmlCheck = HTML === "true" ? true : false;
 
     await sequelize.query(`INSERT INTO "dbProjects"(
-      name, description, image, start_date, end_date, nodejs, reactjs, javascript, html, "createdAt", "updatedAt")
-      VALUES ('${name}', '${description}', '${image}', '${start_date}', '${end_date}', '${nodejsCheck}', '${reactjsCheck}', '${javascriptCheck}', '${htmlCheck}', NOW(), NOW());`)
+      title, author, description, image, start_date, end_date, nodejs, reactjs, javascript, html, "createdAt", "updatedAt")
+      VALUES ('${title}', '${author}', '${description}', '${image}', '${start_date}', '${end_date}', '${nodejsCheck}', '${reactjsCheck}', '${javascriptCheck}', '${htmlCheck}', NOW(), NOW());`)
       
     res.redirect("/");
 
@@ -168,6 +209,51 @@ async function addProject(req,res){
     console.log(error)
   }
 
+}
+
+//EditProject Page
+async function myprojectEdit(req, res) {
+  try {
+    const {id} = req.params
+    const query = `SELECT * FROM "dbProjects" WHERE id=${id}`;
+    const obj = await sequelize.query(query, {
+      type: QueryTypes.SELECT,
+    });
+    res.render("myproject-edit", { 
+      project: obj[0],
+      isLogin: req.session.isLogin,
+      user: req.session.user });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+//EditProject Post
+async function editProject(req, res) {
+  try {
+    const { id } = req.params
+    const {title,start_date, end_date, description, nodeJS, reactJS, javaScript, HTML} = req.body
+    const image = req.file.filename
+
+    // const image = "https://static01.nyt.com/images/2021/12/16/multimedia/16sp-review-next-inyt1/16sp-review-next-inyt1-articleLarge.jpg"
+
+    
+    const nodejsCheck = nodeJS === "true" ? true : false;
+    const reactjsCheck = reactJS === "true" ? true : false;
+    const javascriptCheck = javaScript === "true" ? true : false;
+    const htmlCheck = HTML === "true" ? true : false;
+
+    await sequelize.query(
+      `UPDATE public."dbProjects" SET title='${title}', description='${description}', image='${image}', "start_date"='${start_date}', "end_date"='${end_date}', nodejs=${nodejsCheck}, reactjs=${reactjsCheck}, javascript=${javascriptCheck}, html=${htmlCheck}, "createdAt"=NOW(), "updatedAt"=NOW()
+      WHERE id=${id};`,
+    );
+
+    res.redirect("/");
+
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 //DeleteProject
@@ -188,46 +274,6 @@ async function deleteProject (req,res){
 }
 
 
-//EditProject Page
-async function myprojectEdit(req, res) {
-  try {
-		const {id} = req.params
-		const query = `SELECT * FROM "dbProjects" WHERE id=${id}`;
-		const obj = await sequelize.query(query, {
-			type: QueryTypes.SELECT,
-		});
-		res.render("myproject-edit", { 
-      project: obj[0],
-      isLogin: req.session.isLogin,
-      user: req.session.user });
-	} catch (err) {
-		console.log(err);
-	}
-}
-
-//EditProject Post
-async function editProject(req, res) {
-  try {
-    const { id } = req.params
-    const {name,start_date, end_date, description, nodeJS, reactJS, javaScript, HTML} = req.body
-    const image = "https://static01.nyt.com/images/2021/12/16/multimedia/16sp-review-next-inyt1/16sp-review-next-inyt1-articleLarge.jpg"
-
-    const nodejsCheck = nodeJS === "true" ? true : false;
-		const reactjsCheck = reactJS === "true" ? true : false;
-		const javascriptCheck = javaScript === "true" ? true : false;
-		const htmlCheck = HTML === "true" ? true : false;
-
-    await sequelize.query(
-			`UPDATE public."dbProjects" SET name='${name}', description='${description}', "start_date"='${start_date}', "end_date"='${end_date}', nodejs=${nodejsCheck}, reactjs=${reactjsCheck}, javascript=${javascriptCheck}, html=${htmlCheck}, "createdAt"=NOW(), "updatedAt"=NOW()
-      WHERE id=${id};`,
-		);
-
-    res.redirect("/");
-
-  } catch (error) {
-    console.log(error);
-  }
-}
 
 //RegisterUser Post
 async function registerUser(req,res){
@@ -266,6 +312,7 @@ async function loginUser(req,res){
         return res.redirect('/form-login')
       }else{
         req.session.isLogin = true
+        req.session.idUser = obj[0].id
         req.session.user = obj[0].name
         req.flash('success', 'login success')
         res.redirect('/')

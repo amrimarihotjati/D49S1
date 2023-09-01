@@ -81,4 +81,18 @@ npm i bcrypt
 1. AUTHENTICATION = PROSES IDENTIFICATION, PERIZINAN KE SISTEM, VERIKASI, DEUTENTIKASI
 2. ENCRYPTION = KUNCI VALUES UNTUK USER COCOK ATAU TIDAK DARI DATA
 3. SESSION = DATA UNTUK MELACAK KEADAAN USER SAAT INTERAKSI DI WEBSITE DISIMPAN DI COOKIE DI SISI USER
-4 .COOKIES = MENYIMPAN DATA PADA WEBSITE
+4. COOKIES = MENYIMPAN DATA PADA WEBSITE
+
+
+const multer = require('multer')
+
+const store = multer.diskStorage({
+  destination: function ( req, file, cb) {
+    cb(null, "src/uploads")
+  },
+  filename: function (req, file, cb){
+    cb(null, file.originalname.replace(/\s/g,""))
+  }
+})
+
+const 

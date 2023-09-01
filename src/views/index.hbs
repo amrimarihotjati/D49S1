@@ -154,38 +154,41 @@
         </div>
         <div class="container-project-list" id="container-project-list">
             {{#each project}}
-            <div class="card" style="width: 18rem;">
-                <img src="{{this.image}}" class="card-img-top">
-                <div class="card-body">
-                    <h2 class="card-title text-start">
-                        <a class="text-decoration-none" href="detailproject/{{this.id}}">{{this.name}}</a>
-                    </h2>
-                    <p class="card-text">{{this.duration}}</p>
-                    <p class="card-text">{{this.description}}</p>
-                    <div class="tech-card-container">
-                        <div class="tech-project">
-                            {{#if this.nodejs}}
-                            <i class="fa-brands fa-node-js fa-xl"></i>
-                            {{/if}}
-                            {{#if this.reactjs}}
-                            <i class="fa-brands fa-react fa-xl"></i>
-                            {{/if}}
-                            {{#if this.javascript}}
-                            <i class="fa-brands fa-js fa-xl"></i>
-                            {{/if}}
-                            {{#if this.html}}
-                            <i class="fa-brands fa-html5 fa-xl"></i>
-                            {{/if}}
+                <div class="card" style="width: 18rem;">
+                    <a href="detailproject/{{this.id}}">
+                    <img src="{{this.image}}" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h2 class="card-title text-start">
+                            <a class="text-decoration-none" href="detailproject/{{this.id}}">{{this.title}}</a>
+                        </h2>
+                        <p class="card-text mb-1" style="font-weight: 600; color:brown;">Author : {{this.author}}</p>
+                        <p class="card-text mb-1" style="font-weight: 300; color:grey;">Duration : {{this.duration}}</p>
+                        <p class="card-text">{{this.description}}</p>
+                        <div class="tech-card-container">
+                            <div class="tech-project">
+                                {{#if this.nodejs}}
+                                <i class="fa-brands fa-node-js fa-xl"></i>
+                                {{/if}}
+                                {{#if this.reactjs}}
+                                <i class="fa-brands fa-react fa-xl"></i>
+                                {{/if}}
+                                {{#if this.javascript}}
+                                <i class="fa-brands fa-js fa-xl"></i>
+                                {{/if}}
+                                {{#if this.html}}
+                                <i class="fa-brands fa-html5 fa-xl"></i>
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="button-card-container">
+                                {{#if this.isLogin}}
+                                <a href="myproject-edit/{{this.id}}" class="btn btn-primary">EDIT</a>
+                                <a href="/delete-project/{{this.id}}" class="btn btn-danger">DELETE</a>
+                                {{/if}}
                         </div>
                     </div>
-                    <div class="button-card-container">
-                            {{#if this.isLogin}}
-                            <a href="myproject-edit/{{this.id}}" class="btn btn-primary">EDIT</a>
-                            <a href="/delete-project/{{this.id}}" class="btn btn-danger">DELETE</a>
-                            {{/if}}
-                    </div>
-                </div>
-            </div>
+                </div>                    
             {{/each}}
         </div>
     </div>

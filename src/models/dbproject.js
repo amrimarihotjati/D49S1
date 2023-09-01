@@ -14,11 +14,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   dbProject.init({
-    name: DataTypes.STRING,
-    description: DataTypes.TEXT,
+    author: DataTypes.STRING,
+    title: DataTypes.STRING,
+    description: DataTypes.STRING,
     image: DataTypes.STRING,
-    start_date: DataTypes.DATEONLY,
-    end_date: DataTypes.DATEONLY,
+    start_date: DataTypes.DATE,
+    end_date: DataTypes.DATE,
     nodejs: DataTypes.BOOLEAN,
     reactjs: DataTypes.BOOLEAN,
     javascript: DataTypes.BOOLEAN,

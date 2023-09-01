@@ -77,10 +77,10 @@
     <div class="container">
         <h1>Submit Project</h1>
         <div class="container-form">
-            <form method="post" action="myproject" >
+            <form method="post" action="myproject" enctype="multipart/form-data" >
                 <div class="mb-3">
                     <label for="input-name" class="form-label">Project Name</label>
-                    <input type="text" class="form-control" id="input-project-name" name="name" aria-describedby="emailHelp" required>
+                    <input type="text" class="form-control" id="input-project-name" name="title" aria-describedby="emailHelp" required>
                 </div>
                 <div class="mb-3">
                 <div class="row g-3">
@@ -137,7 +137,7 @@
                 <div class="mb-3">
                     <label for="input-message" class="form-label">Upload Image</label>
                     <div class="input-group mb-3">
-                        <input type="file" class="form-control" id="upload-image" name="image">
+                        <input type="file" class="form-control" id="upload-image" name="upload-image">
                         <label class="input-group-text" for="inputGroupFile02">Upload</label>
                     </div>
                 </div>

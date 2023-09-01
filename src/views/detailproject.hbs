@@ -91,7 +91,7 @@
             text-align: center !important;
             margin-top: 50px !important;
             color: #930e2d !important;
-            font-size: xx-large !important;">{{project.name}}</h1>
+            font-size: xx-large !important;">{{project.title}}</h1>
         <div style="padding: 70px 100px 100px 100px;" class="container-project">
             <div style="display: flex; gap: 20px;" class="container-content">
                 <div style="
@@ -99,7 +99,7 @@
                     flex: 50%;
                     flex-wrap: wrap;
                 " class="container-right-content">
-                    <img class="image-article" style=" object-fit: cover;width: 100%;" src="{{project.image}}">
+                    <img class="image-article" style=" object-fit: cover;width: 100%;" src="../{{project.image}}">
                 </div>
                 <div style="display: flex;
                             flex-direction: column;
@@ -107,6 +107,11 @@
                             flex-wrap: wrap;" 
                         class="container-left-content">
                     <div style="margin: 20px 0px;" class="container-duration">
+                        <h3 style="">Author</h3>
+                            <p>
+                                <i class="fa-solid fa-circle-user fa-xl"></i>
+                                {{project.author}}
+                            </p>
                         <h3 style="">Duration</h3>
                         <div>
                             <p>
